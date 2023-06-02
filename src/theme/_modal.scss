@@ -1,0 +1,95 @@
+.modal {
+    .modal-header {
+        // background-color: $light; /* bootstrap default variable */
+        color: #050505 !important;
+        background-color: #f0ecf5 !important;
+        // &:before{
+        //     position: absolute;
+        //     width: 20px;
+        //     height: 1px;
+        //     left: 16px;
+        //     top: 0;
+        //     content: '';
+        //     background: $dark;
+        // }
+        .modal-header {
+            .modal-title {
+                color: $gray-600;
+                font-size: $modal-font-size;
+                strong {
+                    color: $modal-title-color;
+                }
+            }
+        }
+        .modal-body {
+            badge {
+                font-size: $modal_badge_fsize;
+            }
+        }
+    }
+    .close {
+        outline: none;
+        color: #050505; // lighten($dark,20%);
+        margin: -1rem;
+    }
+}
+
+// Scale up the modal
+@include media-breakpoint-up(xl) {
+    .xl-modal {
+        .modal-dialog {
+            max-width: $modal-xl;
+        }
+    }
+    .xd-modal {
+        .modal-dialog {
+            max-width: 95%;
+        }
+    }
+}
+.bg-yellow {
+    background-color: $cs-yellow;
+}
+.bg-light-green {
+    background-color: $cs-light-green;
+}
+
+.modal-content {
+    .modal-body {
+        .qr-code-options {
+            .active {
+                border: 1px solid $dark;
+            }
+        }
+
+        .dropzone-wrapper {
+            background: $cs-cream-gray;
+            border: 1px dotted $card_text_color;
+            border-radius: 0.75rem;
+            .dropzone-desc {
+                span {
+                    font-size: 1.125rem;
+                    // color: #92b0b3;
+                }
+            }
+            .dropzone {
+                outline: none !important;
+                cursor: pointer;
+                opacity: 0;
+            }
+        }
+        .card{
+            .card-body{
+                a{
+                    i{
+                        svg{
+                            path{
+                                fill: $cs-white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

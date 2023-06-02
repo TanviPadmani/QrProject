@@ -1,0 +1,48 @@
+.notification-dropdown{
+    min-width: $notify_dropdown_w!important;
+    .notificaion{
+    font-size   : $notify_font_size;
+    font-weight : $notify_font_weight;
+    line-height : 1.36;
+    h5{
+        color       : $notify_title_color;
+        font-size   : $notify_font_size;
+    }
+    table td{
+        .notify_icon{
+            padding : $notify_read_icon_p;
+            width   : $notify_read_icon_w;
+            height  : $notify_read_icon_h;
+            &.bg-success{
+                background:$notify_approved_bg;
+            }
+            &.bg-warning{
+                background:$notify_warning_bg;
+            }
+            &.bg-danger{
+                background:$notify_rejected_bg;
+            }
+            &.bg-primary{
+                background:$notify_invoice_bg;
+            }
+            &.bg-lowqty{
+                background:$notify_low_strock_bg;
+            }
+            svg{
+                @include svg(0.875rem, 0.875rem);
+            }
+        }
+        .notifytype{
+            color  :$notify_type_color;
+        }
+        small{
+            color :$notify_small;
+        }
+        .read{
+            i{
+                color:$notify_read_icon_color;
+            }
+        }
+    }
+}
+}

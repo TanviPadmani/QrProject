@@ -1,0 +1,244 @@
+%icon_w_h{
+    width   : $schedule_icon_w;
+    height  : $schedule_icon_w;
+}
+.editdel-sch,
+.skyblue,
+.green,
+.magento{
+    a{
+        font-size: $schedule_icontxt_size;
+        i{
+            @extend %icon_w_h;
+        }
+    }
+    strong {
+        font-size: $schedule_icontxt_size;
+    }
+}
+.editdel-sch {
+    line-height: 0;
+    a{
+        i {
+            color   : $schedule_icon_color;
+        }
+    } 
+}
+.skyblue {
+    color:$cs-sky-blue;
+}
+.green {
+    color:$cs-lemon-green;
+}
+.magento {
+    color:$cs-magento;
+}
+
+/* LABOR - SCHEDULER */
+
+.frmctrlcust {
+    border: 1px solid $cs-common-gray;
+    border-radius: 4px;
+}
+.empschdetails {
+    span {
+        color: $cs-navy-blue;
+        font-size: 1.0625rem;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+}
+.navyblue {
+    color:$cs-navy-blue;
+}
+
+.bg-navyblue {
+    background:$cs-navy-blue;
+}
+
+.bg-skyblue {
+    background: $cs-sky-blue;
+}
+
+.bg-lemon {
+    color: $cs-lemon-green;
+}
+.bg-green {
+    color: $cs-lemon-green;
+}
+ 
+.red {color:$cs-red;}
+
+.bg-magento {
+    background: $cs-magento;
+}
+ 
+
+.bg-orange {background: $cs-sunrise-orange;}
+
+i.icnsrchbutt {
+    background-color: $cs-cream-gray;
+    display: block;
+    padding: 0px;
+    height: 38px;
+    width: 38px;
+    margin: 0px 15px 0px -2px;
+    border-radius: 0 4px 4px 0;
+    border: 1px solid $cs-cement-gray;
+
+    svg {
+        height: 18px;
+        width: 18px;
+        margin-left: 8px;
+        color: $cs-startus-gray;
+        margin-top: 7px;
+    }
+}
+
+/* LABOR DASHBOARD */
+
+.scrollblock {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 370px;
+
+    table thead tr th, table tbody tr td {
+        font-size:0.875rem;
+    }
+}
+div.scrollblock::-webkit-scrollbar {
+    width: 8px;
+}
+div.scrollblock::-webkit-scrollbar-track {
+    background: $cs-lightest-gray;
+}
+div.scrollblock::-webkit-scrollbar-thumb {
+    background: $cs-light-gray;
+}
+div.scrollblock::-webkit-scrollbar-thumb:hover {
+    background: $cs-steel-blue;
+}
+
+/* DASHBOARD COLORS */ 
+.hibiscus-brown {color:$cs-hibiscus-brown;}
+.hibiscus-brown-bg {background-color:$cs-hibiscus-brown; color:$cs-white;}
+.purple {color: $cs-purple;}
+.purple-bg {background-color:$cs-purple; color:$cs-white;}
+.yellow {color: $cs-amber-yellow;}
+.yellow-bg {background-color:$cs-amber-yellow; color:$cs-white;}
+.discard-lost-gray {color: $cs-cement-gray;}
+.discard-lost-gray-bg {background-color:$cs-cement-gray; color:$cs-white;}
+/* DASHBOARD COLORS */ 
+
+/* LABOR - SCHEDULER */
+.w-16 {width:16%;}
+.w-15 {width:15px;}
+.w-30 {width:30px;}
+.w-140 {width: 140px;}
+.w-180 {width: 180px;}
+.w-200 {width: 200px;}
+.w-220 {width: 220px;}
+.w-225 {width: 225px;}
+.w-235 {width: 235px;}
+.w-240 {width: 240px;}
+.w-250 {width: 250px;}
+.w-350 {width: 350px;}
+.w-400 {width: 400px;}
+.w-415 {width: 415px;}
+.w-450 {width: 450px;}
+
+.totalnums {
+    font-size: 1rem;
+    font-weight: 600;
+    color: $cs-steel-blue;
+}
+.totaltitles {
+    color: $cs-navy-blue;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.3px;
+}
+.labformbg {background-color: $cs-lab-gray;}
+.sch-headersblue {
+    color: $cs-navy-blue;
+    font-size: 0.9375rem;
+    text-transform: uppercase;
+}
+.sch-orange {
+    color: $cs-sunrise-orange;
+    font-size: 0.9375rem;
+    text-transform: uppercase;
+}
+.shiftnameblock {
+    background-color: $cs-steel-blue;
+    font-size: 0.8125rem;
+    color: $cs-white;
+    padding: 5px 0px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+.shiftoff {
+    background-color: $cs-lightest-gray;
+    font-size: 0.8125rem;
+    color: $cs-white;
+    padding: 5px 0px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+.shiftnotsch {
+    background-color: $cs-sapphire-blue;
+    font-size: 0.8125rem;
+    color: $cs-white;
+    padding: 5px 0px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+.wrkhrsblock {
+    font-size: 0.8125rem;
+    color: $cs-steeldark-blue;
+    padding: 1px 0px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+.oncallblock {
+    font-size: 0.8125rem;
+    color: $cs-sunrise-orange;
+    padding: 1px 0px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.schemp-name {
+    color: $cs-navy-blue;
+    font-size: 0.9375rem;
+    font-weight: 500;
+}
+.schemp-dept {
+    color: $cs-gray;
+    font-size: 0.8125rem;
+    font-weight: 500;
+}
+
+
+/* Pattern */
+.bg-sch-hrs {background: $cs-steel-blue;} /* sch hrs. */
+.bg-work-hrs {background: $cs-steeldark-blue;} /* work hrs. */
+.bg-clk-hrs {background: $cs-sapphiredark-blue;} /* clock hrs. */ 
+.bg-brk-hrs {background: $cs-amber-yellow;} /* break hrs. */
+.bg-clkin-out-hrs {background: $cs-sapphirelight-blue;} /* break hrs. */
+
+.hrs {    
+    font-size: 0.8125rem;
+    color: $cs-white;
+    padding: 2px 5px;
+    display: block;
+    margin: 5px 2px 0px 0px;
+}

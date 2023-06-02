@@ -1,0 +1,108 @@
+<div class="modal-header">
+    <span></span>
+    <h4 class="modal-title">{{'User Detail' | translate }}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="onCancel()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+
+      <div [ngSwitch]="dataStatus">
+          <cs-loading *ngSwitchCase="dataStatusEnum.Fetching">
+          </cs-loading>
+          <div *ngSwitchCase="dataStatusEnum.DataAvailable">
+            <div class="container">
+              <form [formGroup]="detailForm" (ngSubmit)="onSubmit()" csFocusFirstInvalidField>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label for="input-email">{{'email' | translate }}</label>
+                          <input type="text" autocomplete="off" class="form-control" formControlName="email" id="input-email" placeholder="{{'email' | translate }}">
+
+                          <div *ngIf="isInvalid(email)">
+                            <small class="text-danger" *ngIf="email.errors?.required">
+                              {{'email' | translate}} {{'FIELD_REQUIRED' | translate}}
+                            </small>
+                            <small class="text-danger" *ngIf="email.errors?.email">
+                              {{'FIELD_EMAIL_ERROR' | translate}}
+                            </small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label for="input-fullName">{{'fullName' | translate }}</label>
+                          <input type="text" autocomplete="off" class="form-control" formControlName="fullName" id="input-fullName" placeholder="{{'fullName' | translate }}">
+                          <div *ngIf="isInvalid(fullName)">
+                            <small class="text-danger" *ngIf="fullName.errors?.required">
+                              {{'fullName' | translate}} {{'FIELD_REQUIRED' | translate}}
+                            </small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label for="input-title">{{'title' | translate }}</label>
+                          <input type="text" autocomplete="off" class="form-control" formControlName="title" id="input-title" placeholder="{{'title' | translate }}">
+                          <div *ngIf="isInvalid(title)">
+                            <small class="text-danger" *ngIf="title.errors?.required">
+                              {{'title' | translate}} {{'FIELD_REQUIRED' | translate}}
+                            </small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label for="input-phoneNumber">{{'phoneNumber' | translate }}</label>
+                          <input type="text" autocomplete="off" class="form-control" formControlName="phoneNumber" id="input-phoneNumber"
+                            placeholder="{{'phoneNumber' | translate }}">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                          <div class="form-group">
+                            <label for="input-roles">{{'userRoles' | translate }}</label>
+                            <ng-select [items]="roles"
+                              [selectOnTab]="true"
+                              [multiple]="true"
+                              bindLabel="name"
+                              labelForId="input-roles"
+                              placeholder="{{'TEXT_SELECT' | translate }} {{'userRoles' | translate }}"
+                              clearAllText="{{'TEXT_CLEAR' | translate }}"
+                              formControlName="userRoles">
+                            </ng-select>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <button type="submit" class="btn rounded-0 btn-primary form-button mr-2" [disabled]="submitted">{{'BUTTON_SAVE' |
+                      translate }}</button>
+                    <button type="button" class="btn rounded-0 btn-default form-button" (click)="onCancel()">{{'BUTTON_CANCEL' |
+                      translate }}</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <cs-error-detail *ngSwitchCase="dataStatusEnum.Error">
+          </cs-error-detail>
+        </div>
+
+  </div>
+
+  <!-- <div class="modal-footer">
+    <button type="button" ngbAutofocus class="btn btn-secondary" (click)="onCancel()">{{ model.cancelBtnTextId | translate}}</button>
+    <button type="button" class="btn btn-md btn-danger" (click)="onOk()">{{model.okBtnTextId | translate}}</button>
+  </div> -->

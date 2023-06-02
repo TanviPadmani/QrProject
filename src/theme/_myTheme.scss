@@ -1,0 +1,356 @@
+//_myTheme.scss
+//override variables values here to customize bootstrap variables!
+:root{
+        --pale-lilac : #f8f8ff;
+        --primary    : #6d2dc1;
+}
+$dark               :#6d2dc1;
+$light              :hsl(198, 100%, 98%);
+$text-color         :#000000;
+$form-input-brcolor :#d4d4d4;
+$form-label-color   :#040404;
+$dashboad-box       :#ecd4a6;
+$sb-bgcolor         :#fcfcff;
+$mark_bg            :#c1622d;
+$theme-colors: (
+        "primary"  : $dark,
+        "warning"  : $mark_bg
+);
+
+// CONFIDOSOFT ALL TYPE OF DASHBOARD COLOR PALETTE
+$cs_gray200         :#fafafc;
+$cs-white           :#ffffff;
+$cs-common-gray     :#cccccc;
+$cs-darkest-gray    :#212529;
+$cs-dark-gray       :#454545;
+$cs-gray            :#7a7a7a;
+$cs-light-gray      :#aab5bd;
+$cs-lighter-gray    :#e1e1e1;
+$cs-lightest-gray   :#f0f0f0;
+$cs-cement-gray     :#ced4da;
+$cs-cream-gray      :#fcfcfc;
+$cs-arctic-gray     :#f8f8ff; /* #f5fcff; */
+$cs-lab-gray        :#f8f9fb;
+$cs-startus-gray    :#b9b9b9;
+$cs-nimbus-gray     :#dadada;
+$cs-blue            :#4587f0;
+$cs-navy-blue       :#050505;
+$cs-steel-blue      :#5498cd;
+$cs-steeldark-blue  :#467da9;
+$cs-baby-blue       :#5ab2f5;
+$cs-sky-blue        :#00baf2;
+$cs-arctic-blue     :#f5fcff;
+$cs-sapphire-blue   :#6ebbc4;
+$cs-sapphiredark-blue   :#3caea3;
+$cs-sapphirelight-blue  :#8ecddc;
+$cs-sea-green           :#6ebbc4;
+$cs-sea-darkgreen       :#50aab4;
+$cs-lemon-green         :#63ca6a;
+$cs-magento             :#e83e8c;
+$cs-luxury-magento      :#E05B98;
+$cs-red                 :#f53b3b;
+$cs-cherry-red          :#e52327;
+$cs-orange              :#f37326;
+$cs-pumpkin-orange      :#fd7e14;
+$cs-sunrise-orange      :#ff8a00;
+$cs-amber-orange        :#ffc107;
+$cs-amber-yellow        :#ffc849;
+$cs-hibiscus-brown      :#bf4062;
+$cs-purple              :#7240bf;
+$cs-default             :#f3f3f3;
+$cs-yellow              :#ffe040;
+$cs-light-green         :#b6ee56;
+$cs-amber-skyblue       :#00DCFF;
+$cs-amber-purple        :#E700FF;
+$cs-amber-blue          :#3770EC;
+
+
+/* CONFIDOSOFT ALL TYPE OF DASHBOARD COLOR PALETTE */
+/*
+########################
+#  Full Form Elements  #
+########################
+/*
+sb - sidebar
+w  - width
+p  - Padding
+nv - navbar-vertical
+ns - nav-sm
+mr - Margin-bottom (SP: you mean margin-right?)
+brcrm - breadcrumb
+hg - hourglass
+mgmt - management
+ls - letter spacing
+fc - First Child
+*/
+
+$body_bg            : #fbfaff;
+$size               : 1rem;
+
+// Top Bar Elements
+$tb-badge-right     : -0.125rem;    // Set badge postion on icon
+$tb-badge-top       : 0.3125rem;    // Set badge postion on icon
+$tb-height          : 4rem;     // Default set 75px if you increase height above 75px
+$font-size-base     : 1.3125rem;
+$bg-topbar          :#01a29c;
+// Sidebar Elements
+$sb-dropdown-p      : 1rem;         // "dropdown-item" padding
+$sb-w               : 16.30rem;     // Change Sidebar Width
+$sb-top             : $tb-height;   // set top position related to top bar height
+$sb-dropdown-top    : 35%;          // Set dropdown icon position
+$sb-dropdown-right  : 1.3rem;         // Set dropdown icon position
+$padding-nv         : 1.5rem;
+$sb-link-hover      : $light;
+$sb-icon-w          : 1.4rem; // 1.1875rem;
+$sb-icon-h          : 1.1875rem; // 1.1875rem;
+
+// Sidebar md Elements
+$sb-md-w            : 4.938rem;         // Change tablet Sidebar Width
+$sb-md-p            : .5rem;
+$sb-md-top          : 1.3125rem;    // SP:? /* "navbar-vertical" & "dropdown-menu"  both class use same top in media query and nsv-sm inside*/
+$sb-md-left         : 3rem;
+
+// breadcrumb
+$brcrm-font-size    : 0.75rem;
+
+// Table Elements
+$table-bd-w         : 2rem;          // User icon width and height set equally
+$table-bd-h         : $table-bd-w;
+$table-head-bg      : $light;
+$table-head-txtcolor: $cs-navy-blue;
+$table_badge_w      : 3.125rem;
+$table_btn_fsize    : 0.75rem;
+$table_btn_w        : 6.3rem;
+$thead_th_p         : 0.37rem;
+$table_td_sm_p      : $thead_th_p;
+$table_sm_fc_pl     : 1.3125rem;
+//Table fillter
+$fillter_icon_w     : 0.65rem;
+$fillter_icon_h     : $fillter_icon_w;
+$filler_title_fsize : 1rem;
+$fillter_link_fsize : 0.875rem;
+// Modla Elements
+$modal-title-color  : $dark;
+$modal-font-size    : 1rem;
+$table_strip_baseline: #e21c7826;
+
+// Paginaiton
+$pg-border-radius   : 3.125rem;
+
+// Tabs
+$tab_w              : 11.50rem;
+$tab_font_size      : 0.875rem;
+$tab_font_weight    : 500;
+$tab_normal_bg      : $light;
+$tab_active_bg      : $dark;    /* tab active color + hover color text color */
+$tabs-mr-bottom     : 0.625rem; /* 1.5rem; */
+
+// Title/Heading Desing
+$title-font-size    : 1.375rem;
+$title-text-color   : $dark;         // pseudo and text color both class use same color
+
+// form
+$form-input-height   : 1.875rem;
+$form-input-radius : 0.425rem;
+$form-font-size      : 0.875rem;      // Label Input and btn font size are equal
+$form-btn-w          : 6.875rem;
+$form-btn-h          : 1.875rem;
+$form-check-w        : 1.0625rem;
+$form-check-h        : $form-check-w;
+$form-letter-spacing : 0.42px;
+$font-weight-500     : 500;
+// Page Loader
+$page_loader_shadow  : 0rem 0rem 0.7rem 0rem rgba(180, 180, 180, 0.35); /*0rem 0rem 0.70rem 0rem rgba(69, 135, 240, 0.35);*/
+$page_loader_p       : 0.7rem 1rem;
+$page_loader_radius  : 0.25rem;
+
+// Loader
+$loader-hg-w         : 3.125rem;
+$loader-hg-h         : $loader-hg-w;
+$loader-border-w     : 1.75rem;
+$loader-border-radius: 5rem;
+$loader-top          : 0.125rem;
+$loader-left         : 0.625rem;
+$loader-stock-w      : 0.1875rem;
+
+// Login Page
+$logo-mgmt-font      : 0.9375rem;
+$logo-mgmt-ls        : 0.64375rem; /* 0.74375rem; */
+
+// Search field
+$search-p-right      : 3.1875rem;
+$search-icon-right   : 0.95rem;
+$search-icon-left    : 0.2rem;
+
+
+// Notification Dropdownd
+$notification-w     : 25rem;
+
+// Card Grid
+$card-head-color    : $cs-navy-blue;
+$card-head-fsize    : 1rem;
+$card-label-color   : $card-head-color;
+$card-value-color   : #a6a6a6; /*card value and header icon color*/
+$card-fsize         : $card-head-fsize - 0.125;
+$grid_dropdown_top  : 80%;
+$card_header_p      : 0.47rem 1.25rem;
+$card_header_fsize  : 1rem;
+
+// Calendar button
+$cal_btn_px     : 0.375rem;
+$cal_btn_py     : 0.75rem;
+$add_btn_size   : 0.6875rem;
+
+// Labor
+$schedule_icon_w        : 0.8125rem;
+$schedule_icon_h        : $schedule_icon_w;
+$schedule_icon_color    : $cs-navy-blue;
+$schedule_icontxt_size  : 0.8125rem;
+
+//Custom Upload
+$upload_bg              : $cs_gray200;
+$upload_border_color    : #808080;
+$upload_icon_w          : 95%;
+$upload_icon_top        : 15%;
+
+// Employee List
+$badge_w                : 1.25rem;
+$badge_h                : $badge-w;
+$badge_border_size      : 2px;
+$emp_property_color     : $cs-gray;
+$emp_property_size      : 0.75rem;
+$emp_position_size      : 0.875rem;
+$user_info_size         : $emp_position_size;
+$user_info_color        : $emp_property_color;
+
+//Administrator
+$admin-font-color       : #6c757d;
+$admin-desc-font-color  : #a6a6a6;
+$admin-font-size        : 0.875rem;
+$admin-desc-font-size   : 0.75rem;
+$admin-icon-w           : 1.6875rem;
+$admin-icon-h           : $admin-icon-w;
+$admin-action-icon-w    : 1.125rem;
+$admin-action-icon-h    : $admin-action-icon-w;
+$admin-action-top       : 0.8125rem;
+$admin-action-right     : 2rem;
+
+// Notification
+$notify_dropdown_w      : 17.70rem;
+$notify_header_bgcolor  : $cs_gray200;
+$notify_title_color     : $cs-navy-blue;
+$notify_type_color      : $admin-font-color;
+$notify_font_size       : 14px;
+$notify_font_weight     : 500;
+$notify_read_icon_color : $cs-common-gray;
+$notify_read_icon_w     : 1.875rem;
+$notify_read_icon_h     : $notify_read_icon_w;
+$notify_read_icon_p     : 0.300rem;
+$notify_small           : $cs-gray;
+$notify_invoice_bg      : #5bceef;
+$notify_low_strock_bg   : #ff008a;
+$notify_approved_bg     : #63ca6a;
+$notify_rejected_bg     : #f83636;
+$notify_warning_bg      : #fcc300;
+
+//Step-form
+$step_header_bg         : #3e556d;
+$step_form_header       : #00baf2;
+$step_circle_bg         : #00baf2;
+$step_form_icon_w       : 1.25rem;
+$step_form_icon_h       : $step_form_icon_w;
+
+// Circle Svg Graph
+$svg_w         : 16rem;
+$svg_h         : $svg_w;
+
+// Progressbar Colors
+$bar_danger_color       : #d20005;
+$bar_info_color         : #00b0f0;
+$bar_success_color      : #1bb836;
+$bar_light_success_color: #92d050;
+$bar_warning_color      : #f09600;
+$bar_dark_success       : #68be37;
+$bar_light_warning      : #f8b610;
+
+//Tooltip color
+$tooltip_bg_color       : $cs-white;
+$tooltip_text_color     : $cs-gray;
+$tooltip_border_colors  : #0c0a0a;
+$tooltip_font_size      : 0.875rem;
+$tooltip_padding        : 0.9375rem;
+
+// Medalia Word usage
+$word_bg_color          : $cs_gray200;
+$word_border_color      : $cs-gray;
+
+//Calender+
+$cal_date_width         : 1.5rem;
+$cal_date_height        : $cal_date_width;
+$cal_blank_tab_height   : 6.25rem;
+$table_sm_td_font_size  : 0.875rem;
+$td_btn_font_size       : 0.75rem;
+$td_btn_padding         : 0.175rem 0.75rem;
+$watermark_font_size    : 4rem;
+$watermark_opacity      : 0.06;
+$cal_cell_bg_color      : #eef5ff;
+$datepicker_icon_w      : 2.75rem;
+
+// ng-select
+$ng_value_fsize         : 0.875rem;
+$ng_text_color          : $text-color;
+
+// dashbaord card bg
+$card_bg_color          : $cs_gray200;
+$card_light_p           : 2rem;
+$counter_label_fsize    : 0.875rem;
+$counter_color          : #ffffff;
+$counter_icon_color     : #dee2e7;
+$counter_icon_w         : 1.88rem;
+$counter_icon_h         : $counter_icon_w;
+$card_text_color        :#93909d;
+$card_p_color           :#727272;
+// Login Page
+$btn_fsize              : 0.875rem;
+$btn_padding            : 0.575rem 0.75rem;
+$link_fsize             : 0.75rem;
+$link_letter_space      : 0.023rem;
+
+//Form btn
+$form_btn_fsize         : 0.875rem;
+$form_control_size     : $form_btn_fsize;
+$form_control_line     : 1.5;
+$select_height          : 2.25rem;
+
+//disabled btn
+$disabled_btn_clr      :#000000;
+$disabled_btn_bgclr     :#f9f9f9;
+
+//tab svg icon
+$tabicon_size_base     : 2.625rem;
+$tabicon_size_height   : 1.5625rem;
+$tab_text_color        :#959595;
+//nav-tab font
+$nav_fsize              :0.625rem;
+
+//modal badge font size
+$modal_badge_fsize      :0.875rem;
+
+//table-svg
+$table_svg_fsize        :1.1875rem;
+
+//calender-hedaer-font
+$cal_thead_fsize        :0.8125rem;
+
+//calender-bgcolor
+$cal_bg_red             : #ED766E;
+$cal_bg_green           : #54D6CE;
+$cal_bg_skyblue         : #00DCFF;
+$cal_bg_purple          : #E700FF;
+$cal_bg_blue            : #6E8EFE;
+$cal_bg_black           : rgb(229, 241, 241);
+$cal_bg_week            : #f9f9f9;
+
+//calender-width
+$cal_head_width         : 23.5625rem;
+$cal_border             : $counter_icon_color;

@@ -1,0 +1,210 @@
+%calendar-option{
+    border-radius: 50%;
+    color: $white;
+}
+.btn{
+    &.calendar{
+        width: $datepicker_icon_w;
+        background: transparent url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhciIgZGF0YS1pY29uPSJjYWxlbmRhci1hbHQiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNDQ4IDUxMiIgY2xhc3M9InN2Zy1pbmxpbmUtLWZhIGZhLWNhbGVuZGFyLWFsdCBmYS13LTE0IGZhLTV4Ij48cGF0aCBmaWxsPSIjNGQ0ZDRkIiBkPSJNMTQ4IDI4OGgtNDBjLTYuNiAwLTEyLTUuNC0xMi0xMnYtNDBjMC02LjYgNS40LTEyIDEyLTEyaDQwYzYuNiAwIDEyIDUuNCAxMiAxMnY0MGMwIDYuNi01LjQgMTItMTIgMTJ6bTEwOC0xMnYtNDBjMC02LjYtNS40LTEyLTEyLTEyaC00MGMtNi42IDAtMTIgNS40LTEyIDEydjQwYzAgNi42IDUuNCAxMiAxMiAxMmg0MGM2LjYgMCAxMi01LjQgMTItMTJ6bTk2IDB2LTQwYzAtNi42LTUuNC0xMi0xMi0xMmgtNDBjLTYuNiAwLTEyIDUuNC0xMiAxMnY0MGMwIDYuNiA1LjQgMTIgMTIgMTJoNDBjNi42IDAgMTItNS40IDEyLTEyem0tOTYgOTZ2LTQwYzAtNi42LTUuNC0xMi0xMi0xMmgtNDBjLTYuNiAwLTEyIDUuNC0xMiAxMnY0MGMwIDYuNiA1LjQgMTIgMTIgMTJoNDBjNi42IDAgMTItNS40IDEyLTEyem0tOTYgMHYtNDBjMC02LjYtNS40LTEyLTEyLTEyaC00MGMtNi42IDAtMTIgNS40LTEyIDEydjQwYzAgNi42IDUuNCAxMiAxMiAxMmg0MGM2LjYgMCAxMi01LjQgMTItMTJ6bTE5MiAwdi00MGMwLTYuNi01LjQtMTItMTItMTJoLTQwYy02LjYgMC0xMiA1LjQtMTIgMTJ2NDBjMCA2LjYgNS40IDEyIDEyIDEyaDQwYzYuNiAwIDEyLTUuNCAxMi0xMnptOTYtMjYwdjM1MmMwIDI2LjUtMjEuNSA0OC00OCA0OEg0OGMtMjYuNSAwLTQ4LTIxLjUtNDgtNDhWMTEyYzAtMjYuNSAyMS41LTQ4IDQ4LTQ4aDQ4VjEyYzAtNi42IDUuNC0xMiAxMi0xMmg0MGM2LjYgMCAxMiA1LjQgMTIgMTJ2NTJoMTI4VjEyYzAtNi42IDUuNC0xMiAxMi0xMmg0MGM2LjYgMCAxMiA1LjQgMTIgMTJ2NTJoNDhjMjYuNSAwIDQ4IDIxLjUgNDggNDh6bS00OCAzNDZWMTYwSDQ4djI5OGMwIDMuMyAyLjcgNiA2IDZoMzQwYzMuMyAwIDYtMi43IDYtNnoiIGNsYXNzPSIiPjwvcGF0aD48L3N2Zz4=);
+        background-repeat: no-repeat;
+        object-fit: contain;
+        background-size: 18px;
+        background-position: center;
+        min-width: auto;
+    }
+
+    &.is-invalid{
+        background: transparent url(data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhciIgZGF0YS1pY29uPSJjYWxlbmRhci1hbHQiIHJvbGU9ImltZyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNDQ4IDUxMiIgY2xhc3M9InN2Zy1pbmxpbmUtLWZhIGZhLWNhbGVuZGFyLWFsdCBmYS13LTE0IGZhLTV4Ij48cGF0aCBmaWxsPSIjZmYwMDAwIiBkPSJNMTQ4IDI4OGgtNDBjLTYuNiAwLTEyLTUuNC0xMi0xMnYtNDBjMC02LjYgNS40LTEyIDEyLTEyaDQwYzYuNiAwIDEyIDUuNCAxMiAxMnY0MGMwIDYuNi01LjQgMTItMTIgMTJ6bTEwOC0xMnYtNDBjMC02LjYtNS40LTEyLTEyLTEyaC00MGMtNi42IDAtMTIgNS40LTEyIDEydjQwYzAgNi42IDUuNCAxMiAxMiAxMmg0MGM2LjYgMCAxMi01LjQgMTItMTJ6bTk2IDB2LTQwYzAtNi42LTUuNC0xMi0xMi0xMmgtNDBjLTYuNiAwLTEyIDUuNC0xMiAxMnY0MGMwIDYuNiA1LjQgMTIgMTIgMTJoNDBjNi42IDAgMTItNS40IDEyLTEyem0tOTYgOTZ2LTQwYzAtNi42LTUuNC0xMi0xMi0xMmgtNDBjLTYuNiAwLTEyIDUuNC0xMiAxMnY0MGMwIDYuNiA1LjQgMTIgMTIgMTJoNDBjNi42IDAgMTItNS40IDEyLTEyem0tOTYgMHYtNDBjMC02LjYtNS40LTEyLTEyLTEyaC00MGMtNi42IDAtMTIgNS40LTEyIDEydjQwYzAgNi42IDUuNCAxMiAxMiAxMmg0MGM2LjYgMCAxMi01LjQgMTItMTJ6bTE5MiAwdi00MGMwLTYuNi01LjQtMTItMTItMTJoLTQwYy02LjYgMC0xMiA1LjQtMTIgMTJ2NDBjMCA2LjYgNS40IDEyIDEyIDEyaDQwYzYuNiAwIDEyLTUuNCAxMi0xMnptOTYtMjYwdjM1MmMwIDI2LjUtMjEuNSA0OC00OCA0OEg0OGMtMjYuNSAwLTQ4LTIxLjUtNDgtNDhWMTEyYzAtMjYuNSAyMS41LTQ4IDQ4LTQ4aDQ4VjEyYzAtNi42IDUuNC0xMiAxMi0xMmg0MGM2LjYgMCAxMiA1LjQgMTIgMTJ2NTJoMTI4VjEyYzAtNi42IDUuNC0xMiAxMi0xMmg0MGM2LjYgMCAxMiA1LjQgMTIgMTJ2NTJoNDhjMjYuNSAwIDQ4IDIxLjUgNDggNDh6bS00OCAzNDZWMTYwSDQ4djI5OGMwIDMuMyAyLjcgNiA2IDZoMzQwYzMuMyAwIDYtMi43IDYtNnoiIGNsYXNzPSIiPjwvcGF0aD48L3N2Zz4=);
+        background-repeat: no-repeat;
+        object-fit: contain;
+        background-size: 18px;
+        background-position: center;
+        min-width: auto;
+    }
+}
+.cal_word_limit{
+    display: block;
+    width: 8.75rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.table{
+    .blank_table{
+        height: $cal_blank_tab_height;
+    }
+    .date{
+        width: $cal_date_width;
+        height: $cal_date_height;
+    }
+    .cal_btn{
+        z-index: 7;
+    }
+}
+.table{
+    tbody{
+        tr{
+            &:first-child{
+                th{
+                    background-color: $cal_cell_bg_color;
+                }
+            }
+        }
+    }
+    .btn_small{
+        font-size: 0.75rem;
+    }
+}
+
+.cal_header{
+    line-height: initial;
+}
+.cal_table{
+    height: 35px; overflow-y: hidden;
+}
+.ngb-dp-arrow-btn{
+    min-width: auto!important;
+    color: #6c757d !important;
+}
+.cs_open_calendar{
+    .ngb-dp-day, .ngb-dp-week-number, .ngb-dp-weekday{
+        /* width: 2.8rem!important; */
+        width: 3.0rem!important;
+    }
+    .ngb-dp-week{
+        background: $cal_bg_week !important;
+    }
+    .ngb-dp-month:first-child .ngb-dp-week{
+        width: 100%;
+    }
+        border: 1px solid $cal_border;
+        background-color: $cal_bg_week;
+        width:  $cal_head_width ;
+      .calender_inner{
+        .ngb-dp-header{
+            background:transparent!important;
+        }
+        .ngb-dp-months{
+          background:transparent!important;
+          .ngb-dp-month {
+            width: 100%;
+            background: transparent !important;
+            padding: 0px 15px;
+            ngb-datepicker-month-view {
+              width: 100%;
+            }
+            background:transparent!important;
+
+          }
+        }
+      }
+      .ngb-dp-day{
+          outline: none;
+          height: 2.5rem !important;
+          width: 3.35rem !important;
+      }
+      .custom-day {
+          background-color: transparent;
+          color: $text-color;
+            text-align: center;
+            padding-top: 0.1rem;
+            display: inline-block;
+            height: 1.7rem;
+            width: 1.7rem;
+            margin: 0.5rem;
+            font-size: $cal_thead_fsize;
+            font-weight:$font-weight-bold;
+            &.calender-red{
+                background-color:$cal_bg_red ;
+                @extend %calendar-option;
+              }
+              &.calender-black{
+                background-color:#b5a6a6;
+                @extend %calendar-option;
+                color: #ffffff;
+              }
+              &.calender-green{
+                background-color:$cal_bg_green;
+                @extend %calendar-option;
+              }
+              &.calender-skyblue{
+                background-color:$cal_bg_skyblue;
+                @extend %calendar-option;
+              }
+              &.calender-blue{
+                background-color:$cal_bg_blue;
+                @extend %calendar-option;
+              }
+              &.calender-purple{
+                background-color:$cal_bg_purple;
+                @extend %calendar-option;
+              }
+    }
+    .ngb-dp-weekdays{
+        background-color: transparent!important;
+    .ngb-dp-weekday{
+        color: $text-color;
+        font-weight: $font-weight-bold;
+        font-size: $cal_thead_fsize;
+        margin-right: 5px;
+    }
+}
+}
+ngb-datepicker{
+    font-size: 13px!important;
+    .btn-light{
+        border-radius: 50%;
+        &:hover{
+            background-color: #0000000a;
+            border-radius: 50%;
+        }
+    }
+    .custom-select{
+        border: none;
+    }
+    .ngb-dp-header{
+        background:white!important;
+    }
+    .ngb-dp-week{
+        background: white!important;
+        .ngb-dp-weekday{
+            color: #000000;
+            font-weight: bold!important;
+            font-style: normal;
+        }
+    }
+}
+.ngb-dp-day, .ngb-dp-week-number, .ngb-dp-weekday{
+        width: 2.3rem!important;
+    }
+      .calender_inner{
+        .ngb-dp-months{
+          .ngb-dp-month{
+            ngb-datepicker-month-view{
+              width: 100%;
+            }
+          }
+        }
+      }
+.ngb-dp-day{
+    outline: none;
+}
+.is-invalid{
+    ngb-timepicker{
+        fieldset{
+            .ngb-tp-input{
+                border-color: #ff0000;
+            }
+        }
+    }
+}
+.small_chart{
+    font-size: 0.75rem !important;
+}
+.ngb-dp-month
+:first-child {
+    .ngb-dp-week{
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+}
+}

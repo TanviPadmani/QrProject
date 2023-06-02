@@ -1,0 +1,78 @@
+.circle {
+    border-radius: 50%;
+    width: 1vw;
+    height: 1vw;
+    flex-grow: 0;
+    &.active{
+        outline: 4px double;
+        outline-color: #d4d4d4;
+    }
+}
+.qr-code-container
+{
+border: 2px solid black;
+  border-radius: 50%;
+  padding: 40px;
+
+  background-image: radial-gradient(black 3px, transparent 0);
+  background-size: 15px 10px;
+
+}
+
+// .hexagon {
+//     position: relative;
+//     height: 200px;
+//     width: 200px;
+//     background: black;
+//   }
+//   .hexagon:before, .double:after {
+//     position: absolute;
+//     content: '';
+//   }
+//   .hexagon:before {
+//     top: 4px;  /* border width */
+//     left: 4px;  /* border width */
+//     height: calc(100% - 50px);  /* 100% - (2 * border width) */
+//     width: calc(100% - 50px);  /* 100% - (2 * border width) */
+//   }
+//   .hexagon, .hexagon:before, .double:after {
+//     -webkit-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+//     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+//   }
+  
+// .bg-dustyrose{
+//     background: #db8f8f;
+// }
+// .bg-fawn{
+//     background: #837171;
+// }
+// .bg-charcoal{
+//     background:  #4a4a4a;
+// }
+// .bg-orchid{
+//     background: #ee85dd;
+// }
+// .bg-scarlet{
+//     background: #ea3a2e;
+// }
+// .bg-darktangerine{
+//     background: #ff8c39;
+// }
+// .bg-vividyellow{
+//     background: #ffc631;
+// }
+// .bg-seagreen{
+//     background: #3bb55d;
+// }
+// .bg-turquoise{
+//     background: #6dd3c7;
+// }
+// .bg-purple{
+//     background: #6d2dc1;
+// }
+// .bg-cornflowerblue{
+//     background: #628af8;
+// }
+.is-invalid {
+    border: 1px solid red;
+  }

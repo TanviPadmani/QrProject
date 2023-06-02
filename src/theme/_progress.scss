@@ -1,0 +1,50 @@
+.progress-bar {
+    .bg-danger{
+        background-color: $bar_danger_color;
+    }
+    .bg-info{
+        background-color:$bar_info_color;
+    }
+    .bg-success{
+        background-color:$bar_success_color;
+    }
+    .bg-light-success{
+        background-color:$bar_light_success_color;
+    }
+    .bg-warning{
+        background-color:$bar_warning_color;
+    }
+    .bg-dark-success{
+        background-color:$bar_dark_success;
+    }
+    .bg-light-warning{
+        background-color:$bar_light_warning;
+    }
+    .text-danger{
+        color: $bar_danger_color;
+    }
+    .text-info{
+        color: $bar_info_color;
+    }
+    .text-success{
+        color: $bar_success_color;
+    }
+    .text-light-success{
+        color: $bar_light_success_color;
+    }
+    .text-warning{
+        color: $bar_warning_color;
+    }
+    .text-dark-success{
+        color: $bar_dark_success;
+    }
+    .text-light-warning{
+        color: $bar_light_warning;
+    }
+    
+}
+
+
+.progress-bar{
+        height: 0.5rem;
+}

@@ -1,0 +1,528 @@
+// You can add global styles to this file, and also import other style files
+// live font face Poppins
+// @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap');
+@import "theme/font";
+// Bootstrap variables default values as per our need!
+@import "theme/mixin";
+@import "theme/myTheme";
+//@import "theme/buttons";
+@import "theme/pagination";
+@import "theme/tabs";
+
+
+// Include bootstrap variables..
+@import "~node_modules/bootstrap/scss/bootstrap";
+
+// regular style toast'
+// @import '~ngx-toastr/toastr.css';
+
+// bootstrap style toast
+// or import a bootstrap 4 alert styled design (SASS ONLY)
+// should be after your bootstrap imports, it uses bs4 variables, mixins, functions
+// @import '~ngx-toastr/toastr-bs4-alert';
+
+//CSS fix still not have fix of it.
+//https://stackoverflow.com/questions/17635655/setting-toastr-opacity#answer-17640150
+.toast {
+    opacity: 1 !important;
+    display: block !important;
+}
+
+//perfect-scrollbar css..
+// @import '~perfect-scrollbar/css/perfect-scrollbar.css';
+
+// if you'd like to use it without importing all of bootstrap it requires
+// @import '~bootstrap/scss/functions';
+// @import '~bootstrap/scss/variables';
+// @import '~bootstrap/scss/mixins';
+// @import '~ngx-toastr/toastr-bs4-alert';
+
+// @import "~@ng-select/ng-select/themes/default.theme.css";
+@import "theme/topbar";
+@import "theme/sidebar";
+@import "theme/table";
+@import "theme/form";
+@import "theme/modal";
+@import "theme/breadcrumb";
+@import "theme/responsive";
+@import "theme/loader";
+@import "theme/card";
+@import "theme/calendar";
+@import "theme/buttons";
+//@import "theme/labor";
+//@import "theme/invoice";
+@import "theme/login";
+@import "theme/notification";
+/* Overright dropdown */
+//@import "theme/step_form";
+@import "theme/tooltips";
+@import "theme/dropdown";
+
+body {
+    font-family: 'Poppins';
+    background: $body_bg;
+    font-size: 0.9375rem;
+    color: #000;
+    line-height: 2.0;
+    overflow-x: hidden;
+}
+.font-weight-bold {font-weight: 600 !important;}
+a {
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.dropdown-item {
+    color: $cs-gray;
+}
+
+.font-weight-500 {
+    font-weight: $font-weight-500;
+}
+
+/*Use remaining space like container*/
+/*%flex-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    flex: 1;
+    -ms-flex: 1 1 auto;
+}*/
+%flex-box{
+    padding-left: 7rem;
+    @include media-breakpoint-down(md) {
+     padding-left: 6.5rem;
+    }
+    @include media-breakpoint-down(sm) {
+     padding-left:0;
+    }
+}
+.layout-container {
+    @extend %flex-box;
+    -webkit-box-orient: horizontal;
+    @include flex-dir(row, normal);
+    min-height: calc(100vh - 58px);
+
+    @include media-breakpoint-down(lg) {
+        min-height: calc(100vh - 100px);
+    }
+
+    .main-content {
+        @extend %flex-box;
+        -webkit-box-orient: vertical;
+        @include flex-dir(column, normal);
+        min-width: 0;
+
+        @include media-breakpoint-down(md) {
+            display: block;
+        }
+    }
+
+    .columns {
+        @extend %flex-box;
+        -webkit-box-orient: horizontal;
+        @include flex-dir(row, normal);
+
+        @include media-breakpoint-down(md) {
+            display: block;
+        }
+
+        cs-dashboard {
+            flex: 1;
+        }
+
+        .ps-content {
+            padding-right: 0.625rem;
+
+        }
+    }
+
+}
+
+.demo-chart {
+    height: 270px !important;
+
+    div {
+        margin: 0 auto;
+    }
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.cs_svg {
+    i {
+        svg {
+            @include svg($font-size-base, $font-size-base);
+
+            // &:hover {
+            //     color: $dark;
+            //     fill: $dark;
+            // }
+        }
+    }
+}
+
+// Chrome, Safari, Edge, Opera
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+//  Firefox
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.dropdown-menu {
+    margin: 0;
+}
+
+// Cross browser tab border css(remove)
+a:focus {
+    outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+a.disabled {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.6;
+}
+
+.ng-placeholder {
+    font-size: 13px;
+}
+
+.table-responsive {
+    -ms-overflow-style: scrollbar !important;
+}
+
+.ng-option {
+    font-size: 0.87rem;
+}
+
+::-webkit-input-placeholder,
+::-moz-placeholder,
+:-ms-input-placeholder,
+:-moz-placeholder {
+    line-height: 35px;
+    color: $text-color;
+}
+
+.form_parent {
+    .form_child {
+        margin-bottom: 3rem;
+        display: block;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.error-info {
+    $error-info-icon-w: 4rem;
+    $error-info-icon-h: 4rem;
+
+    i {
+        width: $error-info-icon-w;
+        height: $error-info-icon-h;
+        color: lighten($yellow, 25%);
+    }
+
+    p {
+        font-weight: 600;
+        color: lighten($text-color, 25%);
+    }
+
+    svg {
+        @include svg(4rem, 4rem);
+    }
+}
+
+.text-amberskyblue {
+    color: $cs-amber-skyblue;
+}
+
+.text-success {
+    color: #00CB64 !important
+}
+
+.text-danger {
+    color: #FF0000 !important
+}
+
+.text-muted-black {
+    color: #b5a6a6 !important;
+}
+
+.text-amberpurple {
+    color: $cs-amber-purple;
+}
+
+.txt-navyblue {
+    color: $cs-navy-blue;
+}
+
+.text-amberblue {
+    color: $cs-amber-blue;
+}
+
+.svg_accordian {
+    i {
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+    }
+}
+
+.btn_width {
+    min-width: 0 !important;
+}
+
+.bg_body_light {
+    background-color: #fcfcff;
+}
+
+.btn_small {
+    min-width: 100px;
+}
+
+.w-16 {
+    width: 20%;
+}
+
+.w-18 {
+    width: 18%;
+}
+.w-15 {
+    width: 15%;
+}
+.w-10 {
+    width: 10%;
+}
+.w-45{
+    width: 45%!important;
+}
+.w-90{
+    width: 90% !important;
+}
+.w-100cust {width: 100px !important;}
+.w-140 {width: 140px !important;}
+.w-650 {width: 650px !important;}
+.h-270 {height: 270px !important;}
+.h-280 {height: 280px !important;}
+.ng-border-danger {
+    textarea {
+        border: 1px solid #dc3545 !important;
+        box-shadow: none !important;
+    }
+    .ng-select .ng-select-container {
+        border: 1px solid #dc3545 !important;
+        box-shadow: none !important;
+    }
+}
+
+.rounded-borderlefttop {border-top-left-radius: 1.75rem !important;}
+.rounded-borderrightbott {border-bottom-right-radius: 1.75rem !important;}
+.ss-boxbg {background: linear-gradient(45deg, $mark_bg -42%, $dark 45%);}
+/*.ss-boxbg {background-image:linear-gradient(180deg, #E5097F 0%, #EF7F1A 100%);}*/
+.sub-titles{font-size: 0.875rem; text-transform: uppercase;padding: 0.57rem;}
+.ng-select.ng-select-single .ng-select-container {border-radius: 0.325rem !important;}
+.cst-cntrl {height: 26px !important; border-radius: 0.275rem !important;}
+.cst-cntrl-width{width: 55px!important;}
+
+.header_svg{
+    svg{
+    width: 1.4rem;
+    height: 1.4rem;
+    color: #ea207d;
+    opacity: 1;
+}
+font-size: 0.875rem;
+font-weight: normal;
+}
+.h-385{
+    height: 385px!important;
+}
+.h-35{
+    height: 35px!important;
+}
+/* card backgrounds */
+.bg-card1, .bg-card2, .bg-card3, .bg-card4 {
+/*    background-image:linear-gradient(to bottom left, #E21C78, #ff2b8d);*/
+background-color: none;
+}
+.bg-coins {
+    background: linear-gradient(214.7deg,#EEF501 7.9%,#FAB309 97.82%);
+    border: 2px solid #fff;
+    box-shadow: 0px 2px 4px #bdbdbd;
+    border-radius: 50px;
+}
+.bg-dark-red{
+    background-color: #ED766E;
+}
+.bg-dark-green{
+    background-color: #54D6CE;
+}
+.bg-dark-yellow{
+    background-color: #f6a047; //#FEDE6E;
+}
+.bg-dark-blue {
+  background-color: #849ffe;
+}
+.bg-dark-pink {
+  background-color: #E84593;
+}
+.bg-skyblue {
+    background: #628af8 !important;
+}
+.text-dark_blue{
+    color: #015653 !important;
+}
+.text-green {
+  color: #54D6CE !important;
+}
+.text-blue {
+  color: #6E8EFE !important;
+}
+.text-red {
+  color: #ED766E !important;
+}
+.text-yellow {
+  color: #FEDE6E !important;
+}
+.cs_svg_circle {
+    i {
+        svg {
+          width: 0.3125rem;
+          height: 0.3125rem;
+        }
+    }
+}
+.circle_small{
+    position: absolute;
+    bottom: -9px;
+    left: 19px;
+}
+.bg_yellow_circle{
+    color: #e7b325;
+}
+.bg_blue_circle{
+    color: #6d6be1;
+}
+.badge_yellow{
+    background-color: #FFC800;
+}
+.badge_green{
+    background-color: #00cb64;
+}
+.badge_red{
+    background-color: #C2000D;
+}
+.badge_mint_green{
+    background-color: #54BED6;
+}
+.badge_width{
+    width: 83px;
+}
+.header_primary{
+    &::before{
+        content: "";
+        position: absolute;
+        height: 7px;
+        width: 100%;
+        background:#E21C78;
+        top: 0;
+        left: 0;
+    }
+}
+/* Scrollbar customised */
+// .ps__thumb-x, .ps__thumb-y {
+//     background-color: #01a29c !important;
+//     width: 8px !important;
+// }
+// .ps__rail-x:hover > .ps__thumb-x, .ps__rail-x:focus > .ps__thumb-x, .ps__rail-x.ps--clicking .ps__thumb-x {
+//   height: 8px !important;
+// }
+
+// .ps__rail-y:hover > .ps__thumb-y, .ps__rail-y:focus > .ps__thumb-y, .ps__rail-y.ps--clicking .ps__thumb-y {
+//   width: 8px !important;
+// }
+// ::-webkit-scrollbar {
+//     height: 8px !important;
+//   }
+//   ::-webkit-scrollbar-track {
+//     background: #eae9f0 !important;
+//   }
+//   ::-webkit-scrollbar-thumb {
+//     background:#01a29c !important;
+//     border-radius: 0.625rem !important;
+//     width: 8px !important;
+//   }
+/* Scrollbar customised ends */
+.bg-pale-lavender{
+    background:#fbfaff ;
+}
+.fw-300{
+    font-weight: 300;
+}
+.nav-overflow{
+    z-index: 2 !important;
+}
+.bg-light {
+    background-color: #F0ECF5 !important;
+}
+.badge-header{
+background-color: #fc0303 !important;
+font-size: 0.875rem !important;
+border: 2px solid #ffffff !important;
+color: #ffffff !important;
+}
+.section-border-right{
+
+    .form-header{
+        .form-heading{
+            .form-title{
+                font-size:1.6rem;
+            }
+        }
+    }
+}
+.top-25{
+    top: 25%;
+}
+.rem-25{
+    width: 25rem;
+}
+.container-v2 {
+    box-shadow: 12px 12px 50px rgba(104, 84, 147, 0.1);
+    background-color: #FFFFFF;
+}
+.round_slider {
+    border-radius: 0.75rem !important;
+}
+.right-10{
+    right: 10%;
+} 
+.bottom-40{
+    bottom: 40%;
+}

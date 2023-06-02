@@ -1,0 +1,90 @@
+<div class="row">
+    <p class="pb-4 text-center"><img class="img-fluid" src="../../../../assets/images/logo-innrly.png" /></p>
+    <div class="col-xl-5 mx-auto px-0 col-sm-12 justify-content-end bg-white rounded">
+        <div class="pt-3">
+            <form [formGroup]="detailForm" (ngSubmit)="submit()" class="d-lg-flex d-block">
+                <div class="container m-auto align-items-center justify-content-center px-md-5 px-3 pb-md-5 pb-3">
+
+                    <div class="form-header clearfix mb-3 text-center">
+                        <div class="form-heading">
+                            <div class="h1 display-6 text-capitalize text-dark fw-light py-4">Welcome Back
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <!-- <label for="input-email">{{'FIELD_USERNAME' | translate }}</label> -->
+                        <input type="text" autocomplete="off" class="form-control" formControlName="email"
+                            id="input-email" [ngClass]="{ 'is-invalid' : isInvalid(email) }"
+                            placeholder="{{'FIELD_EMAIL' | translate }}">
+                        <div *ngIf="isInvalid(email)">
+                            <small class="alert alert-danger p-1" *ngIf="email.errors?.required">
+                                {{'FIELD_EMAIL' | translate}} {{'FIELD_REQUIRED' | translate}}
+                            </small>
+                            <small class="alert alert-danger p-1" *ngIf="email.errors?.email">
+                                {{'FIELD_EMAIL_ERROR' | translate}}
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="input-group form-group mb-4">
+                        <!-- <label for="input-password">{{'password' | translate }}</label> -->
+                        <div class="input-group">
+                            <input type="{{isShown ? 'text':'password'}}" class="form-control"
+                                formControlName="password" id="input-password"
+                                [ngClass]="{ 'is-invalid' : isInvalid(password) }"
+                                placeholder="{{'password' | translate }}">
+                            <div class="input-group-append">
+                                <span class="input-group-text border border-rounded bg-transparent py-0">
+                                    <button class="bg-transparent reveal border-0 cs_svg p-0" type="button"
+                                        (click)="this.isShown =!this.isShown">
+                                        <i appSvgIcon="cs_eye" ngbTooltip="Show" *ngIf="!this.isShown"></i>
+                                        <i appSvgIcon="cs_eye_slash" ngbTooltip="Hide" *ngIf="this.isShown"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <div class="clearfix w-100" *ngIf="isInvalid(password)">
+                                <small class="alert alert-danger p-1" *ngIf="password.errors?.required">
+                                    {{'password' | translate}} {{'FIELD_REQUIRED' | translate}}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="form-group custom-control custom-checkbox d-flex align-items-center mb-4 justify-content-between">
+                        <div class="readme custom_checkbox">
+                            <input type="checkbox" class="custom-control-input me-2" id="rememberMe" name="rememberMe-input"
+                                formControlName="rememberMe">
+                            <label class="custom-control-label fw-light text-dark" for="rememberMe">
+                                {{'rememberMe' | translate }} <span> <a class="text-primary text-decoration-none">terms</a> and <a  class="text-primary text-decoration-none">privacy policy</a></span>
+                            </label>
+                        </div>
+                        <!-- <div class="forgort">
+                            <a class="cursor-pointer" routerLink="/auth/forgot-password"><label
+                                    class="text-primary cursor-pointer mb-0 font-weight-normal">{{'TEXT_FORGOT_PASSWORD'
+                                    | translate}}?</label></a>
+                        </div> -->
+                    </div>
+                    <div class="clearfix">
+                        <button type="submit" [disabled]="submitted || !detailForm.dirty"
+                            class="btn btn-primary rounded mr-2 btn-block w-100 btn-lg px-4">
+                            {{'BUTTON_SIGN_IN' | translate }}
+                            <span *ngIf="submitted" class="spinner-border spinner-border-sm"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+
+            <!-- <ul class="nav justify-content-start py-md-3 p-0">
+            <li class="nav-item px-5">
+                <a routerLink="">Terms </a><span class="text-primary px-2">|</span>
+                <a routerLink="">Privacy </a><span class="text-primary px-2">|</span>
+                <a routerLink="">Security </a><span class="text-primary px-2">|</span>
+                <a routerLink="">Support </a><span class="text-primary px-2">|</span>
+                <a routerLink="">Contact</a>
+            </li>
+        </ul> -->
+        </div>
+    </div>
+    <small class="py-xl-5 py-3 text-center text-white copyright">&#169; 2022 Innrly, All rights reserved</small>
+</div>

@@ -1,0 +1,41 @@
+.add-card {
+    background: $cs-arctic-gray;
+    border: 1px solid $form-input-brcolor;
+    .card-body {
+        i {
+            svg {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+        p {
+            color: $dark;
+        }
+    }
+}
+.browse-card{
+    .card-title{
+        font-size: 18px;
+        font-weight: 500;
+        color: $cs-dark-gray;
+    }
+    .card-text{
+        color: $card_text_color;
+        font-size: 13px;
+        line-height: 1.54;
+    }
+}
+.card{
+    p{
+        font-size: 1rem;
+        color: $card_p_color;
+    }
+    .shape-svg{
+        i {
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}

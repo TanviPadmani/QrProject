@@ -1,0 +1,44 @@
+.step-form{
+
+    .bg-blue{
+        background-color:$step_header_bg;
+    }
+    .brand{
+        color: $step_form_header;
+    }
+    .icon_wrapper{
+        position: absolute;
+        bottom: -36%;
+        left: 0%;
+        z-index: 2;
+        .uploader-tool-step{
+            .circle{
+                width: 34px;
+                height: 34px;
+                margin: 0 auto;
+                background-color:  $cs-cement-gray;
+                &.active{
+                    background:  $step_form_header;
+                }
+                div{
+                    line-height: 14px;
+                    padding: 12px;
+                    // svg{
+                    //     @include svg($step_form_icon_w,$step_form_icon_h);
+                    // }
+                }
+            }
+        }
+    }
+}
+#upload-steps
+{
+    .progress{
+        height: 0.2rem;
+        border-radius: 0;
+    .progress-bar{
+        background-color: $step_form_header;
+        height: 0.2rem;
+    }
+}
+}

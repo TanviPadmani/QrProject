@@ -1,0 +1,137 @@
+<div>
+    <div>Role Detail</div>
+    <div [ngSwitch]="dataStatus">
+      <cs-loading *ngSwitchCase="dataStatusEnum.Fetching">
+      </cs-loading>
+      <div *ngSwitchCase="dataStatusEnum.DataAvailable">
+        <div class="container">
+          <form [formGroup]="detailForm" (ngSubmit)="onSubmit()" csFocusFirstInvalidField>
+            <div class="row">
+              <div class="col-sm-6 col-md-12">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="input-name">{{'name' | translate }}</label>
+                      <input type="text" class="form-control" formControlName="name" autocomplete="off" id="input-name" placeholder="{{'name' | translate }}">
+
+                      <div *ngIf="isInvalid(name)">
+                        <small class="text-danger" *ngIf="name.errors?.required">
+                          {{'name' | translate}} {{'FIELD_REQUIRED' | translate}}
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="input-description">{{'description' | translate }}</label>
+                      <input type="text" class="form-control" formControlName="description" autocomplete="off" id="input-description" placeholder="{{'description' | translate }}">
+                      <div *ngIf="isInvalid(description)">
+                        <small class="text-danger" *ngIf="description.errors?.required">
+                          {{'description' | translate}} {{'FIELD_REQUIRED' | translate}}
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label for="input-users">{{'roleUsers' | translate }}</label>
+                        <ng-select [items]="users"
+                          [selectOnTab]="true"
+                          [multiple]="true"
+                          bindLabel="fullName"
+                          labelForId="input-users"
+                          placeholder="{{'TEXT_SELECT' | translate }} {{'roleUsers' | translate }}"
+                          clearAllText="{{'TEXT_CLEAR' | translate }}"
+                          formControlName="roleUsers">
+                        </ng-select>
+                      </div>
+                    </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                  <label>{{'FIELD_PERMISSIONS' | translate }}</label>
+                  <div>
+                      <table class="table table-sm  table-hover table-bordered table-sm">
+                          <thead class="thead-light">
+                            <tr>
+                              <th>
+                                Type
+                              </th>
+                              <th>
+                                View
+                              </th>
+                              <th>
+                                Update
+                              </th>
+                              <th>
+                                Create
+                              </th>
+                              <th>
+                                Delete
+                              </th>
+                              <th>
+                                Select all
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody formArrayName= 'rolePermissions'>
+                            <tr *ngFor="let permissionFor of rolePermissions.controls; let i = index;"  [formGroupName]="i">
+                              <td>
+                                <label>
+                                    {{currentPermissions[i].textId() | translate}}
+                                </label>
+                              </td>
+                              <td>
+                                <label>
+                                  <input formControlName="viewAccess" type="checkbox">
+                                </label>
+                              </td>
+                              <td>
+                                  <label>
+                                    <input formControlName="updateAccess" type="checkbox">
+                                  </label>
+                              </td>
+                              <td>
+                                  <label>
+                                    <input formControlName="createAccess" type="checkbox">
+                                  </label>
+                              </td>
+                              <td>
+                                  <label>
+                                    <input formControlName="deleteAccess" type="checkbox">
+                                  </label>
+                              </td>
+                              <td>
+                                  <label>
+                                    <input formControlName="allAccess" type="checkbox">
+                                  </label>
+                              </td>
+                            </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <button type="submit" class="btn rounded-0 btn-primary form-button mr-2" [disabled]="submitted">{{'BUTTON_SAVE' |
+                  translate }}</button>
+                <button type="button" class="btn rounded-0 btn-default form-button" (click)="onCancel()">{{'BUTTON_CANCEL' |
+                  translate }}</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <cs-error-detail *ngSwitchCase="dataStatusEnum.Error">
+      </cs-error-detail>
+    </div>
+  </div>

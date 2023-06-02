@@ -1,0 +1,19 @@
+<div class="modal-header p-2">
+    <div class="modal-heading">
+        <div class="modal-title text-uppercase font-weight-bold">{{ model.titleTextId | translate }}
+        </div>
+    </div>
+    <button type="button" class="close" aria-label="Close" (click)="onCancel()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <p>
+        {{ model.messageTextId | translate }}
+    </p>
+</div>
+<div class="modal-footer justify-content-start">
+    <button type="button" class="btn btn-primary" (click)="onOk()">{{model.okBtnTextId | translate}}</button>
+    <button type="button" ngbAutofocus class="btn btn-primary" (click)="onCancel()">{{ model.cancelBtnTextId |
+        translate}}</button>
+</div>

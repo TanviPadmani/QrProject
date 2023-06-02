@@ -1,0 +1,56 @@
+.section-left{
+    background-color: $cs_gray200;
+    border-top-left-radius: 1.75rem !important;
+    border-bottom-left-radius: 1.75rem !important;
+    background-size: cover;
+    background-position: bottom;
+    position: relative;
+    small{
+
+        font-size: $logo-mgmt-font;
+        clear: both;
+        display: block;
+        letter-spacing: $logo-mgmt-ls;
+    }
+    &:before{
+        content: '';
+        position: absolute;
+        // background: rgba(0,0,0,0.5);
+        width: 100%;
+        height: 100%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+    }
+}
+.section-right{    
+    border-top-right-radius: 1.75rem !important;
+    border-bottom-right-radius: 1.75rem !important;
+    .form-header{
+        .form-heading{
+            .form-title{
+                font-size:1.9rem;
+            }
+        }
+    }
+    .custom-control-label{
+        &:before{
+            top: 0.1975rem;
+        }
+    }
+    .text-success{
+       i{
+            width: auto;
+            height: auto;
+        }
+    }
+    .btn{
+        font-size: $btn_fsize;
+        padding: $btn_padding;
+    }
+    .nav-item{
+        font-size: $link_fsize;
+        letter-spacing: $link_letter_space;
+    }
+}

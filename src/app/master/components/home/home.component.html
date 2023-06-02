@@ -1,0 +1,33 @@
+<!-- <cs-header></cs-header> -->
+<div id="wrapper">
+  <div class="layout-container container-fluid p-0">
+  
+    <!-- <nav id="sidebar" class="side-bar navbar d-none d-sm-none d-md-block"> nav-sm -->
+    <nav (mouseleave)="navService.isPopupMenu = false" (mouseenter)="navService.isPopupMenu = true" class="navbar navbar-vertical navbar-expand-md d-block border-right navbar-light bg-light float-left"
+      [ngClass]="navBarClass" id="sidebar">
+      <cs-side-bar></cs-side-bar>
+    </nav>
+    <div class="main-content p-0">
+      <div class="columns col-md-12">
+        <!-- <perfect-scrollbar style="max-height:calc(100vh - 110px);"> -->
+          <ng-container *ngIf="loadingRouteConfig">
+            <div class="page-loader position-relative">
+              <div class="page-loader-inner position-fixed h-100" style="width: calc(100vw - 3rem)!important;">
+                <cs-loading>
+                </cs-loading>
+              </div>
+            </div>
+          </ng-container>
+          <ng-container>
+            <router-outlet></router-outlet>
+          </ng-container>
+        <!-- </perfect-scrollbar> -->
+
+      </div>
+      <!-- <div class="columns p-4">
+          <router-outlet></router-outlet>
+      </div> -->
+      <cs-footer></cs-footer>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+
+.navbar {
+    &.sticky-top{
+        height: $tb-height;
+    }
+    .navbar-toggler{
+        margin-bottom: 10px;
+        outline: none;
+        color: $white;
+    }
+    .logo{
+        .text-logo{
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.33;
+        }
+    }
+    .right-menu{
+        .nav-item{
+            .badge{
+                top: $tb-badge-top;
+                right:$tb-badge-right;
+                background-color: lighten($dark,20%)
+            }
+            .nav-link{
+                color: $white;
+            }
+        }
+    }
+   svg{
+    @include svg($font-size-base,$font-size-base);
+   }
+}
+
+// Small devices (landscape phones, 576px and down)
+@include media-breakpoint-down(sm) {
+    .flex-column{
+        flex-direction:row!important;
+    }
+}
+@include media-breakpoint-down(xs) {
+    .navbar {
+        &.sticky-top{
+            height: $tb-height;
+        }
+    }
+    .flex-column{
+        flex-direction:unset;
+    }
+}
+.bg-red{
+    /* background-color: $bg-topbar; */
+    /* background-image: linear-gradient(180deg, #E21C78 0%, #f04d45 100%);*/
+    background-color: #fcfcff;
+}

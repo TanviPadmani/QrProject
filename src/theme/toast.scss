@@ -1,0 +1,38 @@
+.toast_upper{
+    top: 0;
+    right: 0;
+    margin: $toast_margin;
+    z-index: $toast_zindex;
+    ngb-toast{
+       &.text{
+           &-success{
+            .toast-header{
+                strong{
+                 color: $green;
+                }
+            }
+           }
+           &-danger{
+            .toast-header{
+                strong{
+                 color: $red;
+                }
+            }
+           }
+           &-warning{
+            .toast-header{
+                strong{
+                 color: $yellow;
+                }
+            }
+           }
+           &-info{
+            .toast-header{
+                strong{
+                 color: $info;
+                }
+            }
+           }
+       }
+    }
+}

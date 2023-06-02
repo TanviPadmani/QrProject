@@ -1,0 +1,46 @@
+%placeholder{
+    font-size: calc($size + .125rem);
+    color:#93909d;
+}
+form{
+    .form-label{
+        font-size: calc($size + .125rem);
+        font-weight: 500;
+        color: $cs-dark-gray;
+    }
+    .form-header{
+        color: $dark;
+        font-size: calc($size + .375rem);
+    }
+    .input-group-text{
+        background: #f8f8ff;
+        width: calc($size  + 2.438rem);
+        height: calc($size  + 2.625rem);
+    }
+}
+input{
+    &.form-control
+    {
+        border: solid 1px #d4d4d4;
+        height: 58px;
+    }    
+}
+.form-control
+{
+    &:focus{
+        box-shadow: none;
+        border: 1px solid #ced4da;
+    }
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+   @extend %placeholder;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    @extend %placeholder;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    @extend %placeholder;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    @extend %placeholder;
+  }

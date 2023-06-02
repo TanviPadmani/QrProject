@@ -1,0 +1,14 @@
+.pagination {
+   margin: 0;
+    .page-link {
+    border:0!important;
+    border-radius:$pg-border-radius;
+    &:first-child,
+    &:last-child{
+        border-radius:$pg-border-radius!important;
+    }
+  }
+    .page-item {
+    padding: 0 0.1rem;
+  }
+}

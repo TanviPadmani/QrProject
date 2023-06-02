@@ -1,0 +1,104 @@
+<div>
+    <div>
+      User list
+    </div>
+    <div [ngSwitch]="dataStatus">
+      <cs-loading *ngSwitchCase="dataStatusEnum.Fetching">
+      </cs-loading>
+      <div *ngSwitchCase="dataStatusEnum.DataAvailable">
+        <div class="mb-2">
+          <cs-grid-toolbar [component]="self"></cs-grid-toolbar>
+        </div>
+        <table class="table table-sm  table-hover table-bordered table-sm mb-0">
+          <thead class="thead-light">
+            <tr>
+              <th width="20">
+                <label class="ng-checkbox" *ngIf="self.allowMultipleSelect">
+                  <input type="checkbox" [(ngModel)]="self.selectAll" (click)="self.onSelectDeselectAll()">
+                  <span></span>
+                </label>
+              </th>
+              <th>
+                <cs-cscolumn-sorter field="id" [orderBy]="tableConf.orderBy" (onSort)="onColumnSort($event)">
+                  {{tableColumns.id.titleTextId | translate}}
+                </cs-cscolumn-sorter>
+              </th>
+              <th>
+                <cs-cscolumn-sorter field="email" [orderBy]="tableConf.orderBy" (onSort)="onColumnSort($event)">
+                  {{tableColumns.email.titleTextId | translate}}
+                </cs-cscolumn-sorter>
+              </th>
+              <th>
+                <cs-cscolumn-sorter field="fullName" [orderBy]="tableConf.orderBy" (onSort)="onColumnSort($event)">
+                  {{tableColumns.fullName.titleTextId | translate}}
+                </cs-cscolumn-sorter>
+              </th>
+              <th>
+                <cs-cscolumn-sorter field="phoneNumber" [orderBy]="tableConf.orderBy" (onSort)="onColumnSort($event)">
+                  {{tableColumns.phoneNumber.titleTextId | translate}}
+                </cs-cscolumn-sorter>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+              </td>
+              <td></td>
+              <td>
+                <input type="text" autocomplete="off" class="form-control" placeholder="Email" [(ngModel)]="filterObject.email"
+                  (ngModelChange)="onFilterChange('email')">
+              </td>
+              <td>
+                <input type="text" autocomplete="off" class="form-control" placeholder="{{'fullName' | translate}}" [(ngModel)]="filterObject.fullName"
+                  (ngModelChange)="onFilterChange('fullName')">
+              </td>
+              <td>
+                <input type="text" autocomplete="off" class="form-control" placeholder="Phone Number" [(ngModel)]="filterObject.phoneNumber"
+                  (ngModelChange)="onFilterChange('phoneNumber')">
+              </td>
+            </tr>
+            <ng-container *ngIf="gridDataStatus === dataStatusEnum.DataAvailable">
+              <tr *ngFor="let record of list" (click)="changeSelection(record)" (dblclick)="gotoDetail(record)">
+                <td>
+                  <label class="ng-checkbox">
+                    <input type="checkbox" [(ngModel)]="record.$selected">
+                    <span></span>
+                  </label>
+                </td>
+                <td>
+                  {{record.id}}
+                </td>
+                <td>
+                  {{record.email}}
+                </td>
+                <td>
+                  {{record.fullName}}
+                </td>
+                <td>{{record.phoneNumber}}</td>
+              </tr>
+            </ng-container>
+            <ng-container *ngIf="gridDataStatus === dataStatusEnum.Fetching">
+              <tr>
+                <td colspan="5">
+                    <cs-loading>
+                    </cs-loading>
+                </td>
+              </tr>
+            </ng-container>
+          </tbody>
+          <tfoot class="border-top">
+            <tr>
+              <td colspan="5">
+                <ngb-pagination [collectionSize]="tableConf.totalRecords" [(page)]="tableConf.pageNo" [pageSize]="tableConf.pageSize"
+                  [maxSize]="5" (pageChange)="pageChanged($event)" [boundaryLinks]="true">
+                </ngb-pagination>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <cs-error-detail *ngSwitchCase="dataStatusEnum.Error">
+      </cs-error-detail>
+    </div>
+  </div>

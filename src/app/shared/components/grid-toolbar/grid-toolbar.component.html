@@ -1,0 +1,49 @@
+<div *ngIf="!component.toolbarConfig.hideAll">
+
+    <!-- <div class="checkbox-sq" *ngIf="component.toolbarConfig.checkAll.visible && !hideCheckAll" >
+        <label class="ng-checkbox">
+            <input type="checkbox" [disabled]="!baseListComponent.allowMultipleSelect" [(ngModel)]="baseListComponent.selectAll" (click)="baseListComponent.onSelectDeselectAll()">
+            <span></span>
+        </label>
+    </div> -->
+  
+    <div class="btn-group">      
+        <button type="button" class="btn btn-primary" 
+          *ngIf="component.toolbarConfig.add.visible"
+          [disabled]="!component.isCreateAccess"
+          (click)="component.gotoDetail()"        
+          csSvgIcon="icn_delete"
+          [title] = "'BUTTON_ADD' | translate">
+        </button>
+  
+        <button type="button" class="btn btn-primary"
+          *ngIf="component.toolbarConfig.edit.visible"
+          [disabled]="!component.isOpenAllowed"
+          (click)="component.gotoDetail(component.selectedRecord)"
+          csSvgIcon="icn_delete"
+          [title] = "'BUTTON_OPEN' | translate">        
+        </button>
+  
+        <button type="button" class="btn btn-primary" 
+          *ngIf="component.toolbarConfig.delete.visible"
+          [disabled]="!component.isDeleteAllowed"
+          (click)="component.onDeleteClick(component)"
+          [title] = "'BUTTON_DELETE' | translate" >
+          <i class="fa fa-2x fa-trash"></i>
+        </button>
+  
+        <button type="button" class="btn btn-primary" 
+          *ngIf="component.toolbarConfig.clearSorting.visible"
+          (click)="component.clearSorting(component)"
+          [title] = "'BUTTON_CLEAR_SORT' | translate">
+            <i class="fa fa-2x fa-sort"></i>
+        </button>
+  
+        <button type="button" class="btn btn-primary" 
+          *ngIf="component.toolbarConfig.clearFilter.visible"
+          (click)="component.clearFilter(component)"
+          [title] = "'BUTTON_CLEAR_FILTER' | translate" >
+          <i class="fa fa-2x fa-filter"></i>
+        </button>
+    </div>
+  </div>

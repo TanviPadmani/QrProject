@@ -1,0 +1,290 @@
+//
+// Basic Bootstrap table
+//
+%table_thead{
+    border-bottom: 1px solid $cs-cement-gray;
+    color: $cs-navy-blue;
+    font-size: 0.875rem;
+    text-transform:uppercase;
+    font-weight: 600;
+    border: 0;
+    vertical-align: middle;
+    padding: $thead_th_p;
+        &:last-child{
+            border-right:1px solid $table-border-color;
+        }
+}
+.fillter{
+    h6{
+        font-size: $filler_title_fsize;
+        font-weight: 600;
+    }
+    svg{
+        @include svg($fillter_icon_w,$fillter_icon_h);
+    }
+    a{
+        font-size: $fillter_link_fsize;
+        font-weight: 500;
+        svg{
+            @include svg($fillter_icon_w,$fillter_icon_h);
+        }
+        &.cs-search{
+                &:before{
+                    top: 0;
+                    right:50px;
+                    content: '';
+                    position:absolute;
+                    border-left: 1px solid $cs-common-gray;
+                    height: 100%;
+
+            }
+        }
+    }
+}
+.table {
+    font-size: 14px;
+    color: $text-color;
+    &.large_table{
+        font-size: 0.75rem;
+    }
+    &.invheads{
+        td {
+            padding:0.125rem !important;
+        }
+        thead th {
+            padding:0.0rem !important;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: $cs-steel-blue;
+            border-right:1px solid $table-border-color;
+        }
+    }
+    td{
+        .hover_dropdwon{
+            top:60%!important;
+        }
+    }
+    tbody,thead{
+        tr{
+            &:not(.not-loader){
+                svg{
+                    @include svg($table_svg_fsize,$table_svg_fsize);
+                }
+            }
+            .cs_svg_small{
+                i{
+                    svg{
+                       width: 0.65rem!important;
+                       height:  0.65rem!important;
+                    }
+                 }
+            }
+            .btn{
+                font-size: $table_btn_fsize;
+                min-width: $table_btn_w;
+                &.calendar{
+                    width: $datepicker_icon_w;
+                    min-width: auto;
+                }
+            }
+        }
+    }
+    .thead-light {
+        th {
+            color: $table-head-txtcolor;
+            background-color: #F0ECF5 !important;
+        }
+    }
+    tbody{
+        .tbody_grey{
+            background-color: $cs-arctic-gray !important;
+        }
+        .td_header{
+            background-color: $table_strip_baseline;
+        }
+    }
+}
+
+// Border versions
+//
+// Add or remove borders all around the table and between all the columns.
+
+.table-bordered {
+    thead {
+      th  {
+        @extend %table_thead;
+    }
+    }
+}
+
+// Zebra-striping
+//
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+
+.table-striped {
+    &.border_none{
+        border: 0 !important;
+        thead {
+            border: 0 !important;
+            th  {
+                border: 0 !important;
+          }
+        }
+    }
+    thead {
+        th  {
+          @extend %table_thead;
+      }
+    }
+   
+    tbody tr:nth-of-type(#{$table-striped-order}) {
+        background-color: $cs-white !important;
+    }
+    tbody tr:nth-of-type(even) {
+        background-color: $cs-arctic-gray !important;
+    }
+    .extra_info{
+        right: 0;
+        top: 1.5625rem;
+        z-index: 122;
+        min-width: 275px;
+    }
+    .cs_badge{
+        width: $table_badge_w!important;
+    }
+    .badge{
+        // width: $badge_w - 0.25;
+        // height: $badge_h - 0.25;;
+        // border: solid $badge_border_size $white;
+        // bottom: 0;
+        // right: -5px;
+    }
+}
+
+.cs-table{
+    tr{
+        td{
+            border: 0;
+            // border-top:1px solid $table-border-color; /*bootstrap defult varible use here*/
+            color:$gray-700;
+            vertical-align: middle;
+            &:last-child{
+                border-right:1px solid $table-border-color;
+            }
+            a{
+                text-decoration: none;
+                color:$gray-900; /*bootstrap defult varible use here*/
+                i{
+                    color:$gray-500; /*bootstrap defult varible use here*/
+                }
+            }
+            .user-badge{
+                width   : $table-bd-w;
+                height  : $table-bd-h;
+            }
+        }
+    }
+    thead{
+        text-transform: uppercase;
+        border-bottom:1px solid $table-border-color;
+        tr
+        {
+            .options{
+                &hover{
+                    .alloptions{
+                        visibility: visible!important;
+                    }
+                }
+            }
+            th{
+                @extend %table_thead;
+                a{
+                    @include ease-all;
+                    &:hover{
+                        i{
+                            color: $dark;
+                        }
+                    }
+                    i{
+                        height: auto;
+                    }
+                    &:disabled,
+                    &[readonly] {
+                      background-color: $input-disabled-bg; /* bootstrap default variable*/
+                      opacity: 1;
+                    }
+
+                }
+            }
+        }
+
+    }
+    tbody{
+        tr{
+            &:hover{
+                td{
+                    i{
+                        color:$gray-900;
+                    }
+                }
+                .more{
+                    visibility: visible!important;
+                }
+            }
+
+        }
+    }
+}
+.table-responsive{
+    overflow: overlay;
+    .table-bordered{
+        border: $table-border-width solid $table-border-color; /*bootstrap defult varialbe use*/
+    }
+}
+.text-navblue{
+    color: $table-head-txtcolor!important;
+}
+.table-fixed{
+    thead{
+         tr{
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+    }
+    tbody{
+        display:block;
+        height:13.7rem;
+    // overflow:auto;
+         tr{
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+}
+}
+.table_body_light{
+    background-color: #fafafc;
+}
+.table-sm{
+    th,
+    td{
+        &:first-child{
+            padding-left: $table_sm_fc_pl;
+        }
+        vertical-align: middle;
+        font-size: $table_sm_td_font_size;
+        .btn{
+            font-size: $td_btn_font_size;
+            padding: $td_btn_padding;
+            &.calendar{
+                width: $datepicker_icon_w;
+                min-width: auto;
+            }
+        }
+    }
+    td{
+        padding: 0.37rem $table_td_sm_p;
+    }
+
+}

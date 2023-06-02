@@ -1,0 +1,123 @@
+<!-- <p>preview-popup works!</p>
+<button type="submit"  (click)="onCancel()" class="btn btn-secondary">close </button> -->
+<!-- <app-preview-popup selectedColor="currentColor"></app-preview-popup> -->
+
+<div class="modal-header">
+    <h1 class="modal-title fs-6 text-primary" id="exampleModalLabel">Customize QR Code</h1>
+    <button type="button" (click)="onCancel()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div  class="modal-body">
+    <div id="preview"  class="card bg-white border rounded-3">
+        <div class="position-relative">
+            <!-- <img src="../../../../assets/images/dummy-prof-pic.png" class="card-img-top img-fluid" alt="..."> -->
+            <img [src]="cardData && cardData.image ? cardData.image : './../../../assets/images/dummy-prof-pic.png'" class="card-img-top img-fluid" alt="...">
+
+
+            <div class="position-absolute w-100 overflow-hidden shape-svg bottom-0">
+                <i>
+                    <svg [ngStyle]="{fill:cardData.color}" xmlns="http://www.w3.org/2000/svg" height="173"
+                        viewBox="0 0 400 173" fill="none">
+                        <path
+                            d="M400 108.97V14.175C281.883 -50.4307 199.328 126.48 139 131.311C238.489 168.098 295.656 163.074 400 108.97Z" />
+                        <path
+                            d="M0 41C122.122 145.525 260.523 190.824 400 103.509V115.912C252.055 185.367 163.24 172.081 0 51.9143V41Z" />
+                        <path d="M0 48C122.122 152.525 246 190.5 400 110.509V173H0V48Z" fill="white" />
+                    </svg>
+                </i>
+                <div class="position-absolute right-10 bottom-40 text-end w-50 overflow-hidden">
+                    <img [src]= " cardData && cardData.logo ? cardData.logo :'../../../../assets/images/logo-innrly.png'" alt="" class="img-fluid w-50">
+                </div>
+            </div>
+        </div>
+
+        <div  class="card-body">
+            <h5  class="text-dark text-center">{{cardData.name}}</h5>
+            <!-- <p class="text-dark text-center font-weight-500 text-black">Precident / CEO - INNRLY</p> -->
+            <div class="d-grid">
+                <div class="d-flex py-2" *ngIf="cardData.email">
+                    <div>
+                        <a class="rounded-circle p-3 bg-skyblue">
+                            <i csSvgIcon="cs_email"></i>
+                        </a>
+                    </div>
+                    <div class="ms-3">
+                        <p class="font-weight-500">{{cardData.email}}</p>
+                    </div>
+                </div>
+                <div class="d-flex py-2" *ngIf="cardData.contact">
+                    <div>
+                        <a class="rounded-circle p-3 bg-skyblue">
+                            <i csSvgIcon="cs_phone"></i>
+                        </a>
+                    </div>
+                    <div class="ms-3">
+                        <p class="font-weight-500">{{cardData.contact}}</p>
+                    </div>
+                </div>
+                <div class="d-flex my-2">
+                    <div>
+                        <a class="rounded-circle p-3 bg-skyblue" *ngIf="cardData.address">
+                            <i csSvgIcon="cs_loaction"></i>
+                        </a>
+                    </div>
+                    <div class="ms-3">
+                        <p class="font-weight-500">{{cardData.address}}</p>
+                    </div>
+                </div>
+                <div class="d-flex my-2" *ngIf="cardData.web">
+                    <div>
+                        <a class="rounded-circle p-3 bg-skyblue">
+                            <i csSvgIcon="cs_web"></i>
+                        </a>
+                    </div>
+                    <div class="ms-3">
+                        <p class="font-weight-500">{{cardData.web}}</p>
+                    </div>
+                </div>
+                <div class="d-flex my-2" *ngIf="cardData.fb">
+                    <div>
+                        <a class="rounded-circle p-3 bg-skyblue">
+                            <i csSvgIcon="cs_facebook"></i>
+                        </a>
+                    </div>
+                    <div class="ms-3">
+                        <p class="font-weight-500">{{cardData.fb}}</p>
+                    </div>
+                </div>
+                <div class="d-flex my-2" *ngIf="cardData.twitter">
+                    <div>
+                        <a class="rounded-circle p-3 bg-skyblue">
+                            <i csSvgIcon="cs_twitter"></i>
+                        </a>
+                    </div>
+                    <div class="ms-3">
+                        <p class="font-weight-500">{{cardData.twitter}}</p>
+                    </div>
+                </div>
+                <div class="d-flex my-2" *ngIf="cardData.instagam">
+                    <div>
+                        <a class="rounded-circle p-3 bg-skyblue">
+                            <i csSvgIcon="cs_instagram"></i>
+                        </a>
+                    </div>
+                    <div class="ms-3">
+                        <p class="font-weight-500">{{cardData.instagram}}</p>
+                    </div>
+                </div>
+                <div class="d-flex my-2" *ngIf="cardData.linkdin">
+                    <div>
+                        <a class="rounded-circle p-3 bg-skyblue">
+                            <i csSvgIcon="cs_linkedin"></i>
+                        </a>
+                    </div>
+                    <div class="ms-3">
+                        <p class="font-weight-500">{{cardData.linkdin}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center p-3">
+        <button type="button" class="btn btn-primary round_slider btn-sm" value="convert" (click)="convertToPDF()">SAVE CONTACT</button>
+    </div>
+</div>

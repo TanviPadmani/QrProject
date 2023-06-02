@@ -1,0 +1,69 @@
+%border {
+    border-top: 0 !important;
+    border-right: 0 !important;
+    border-left: 0 !important;
+}
+.nav-tabs {
+    margin-bottom: $tabs-mr-bottom !important;
+
+    .nav-item {
+        font-size: $tab_font_size;
+        font-weight: $tab_font_weight;
+        &:not(:first-child) {
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+        }
+    }
+    .nav-link {
+        font-size: 1rem;
+        color: $tab_text_color;
+        @extend %border;
+        @include ease-all;
+        &.active {
+            color: $dark !important;
+            @extend %border;
+            background: transparent !important;
+            position: relative;
+            &:before {
+                position: absolute;
+                width: 100%;
+                height: 1px;
+                background: $dark;
+                content: "";
+                left: 0;
+                bottom: 0;
+                border-radius: 50px;
+            }
+            &:hover {
+                @extend %border;
+            }
+        }
+        &:hover {
+            @extend %border;
+            color: $dark !important;
+        }
+        &.disabled {
+            background-color: $disabled_btn_bgclr !important;
+            color: $disabled_btn_clr !important;
+        }
+    }
+}
+
+.ng_space {
+    ul {
+        margin-bottom: 0 !important;
+    }
+}
+.ng_svg {
+    i {
+        svg {
+            @include svg($tabicon_size_base, $tabicon_size_height);
+        }
+    }
+}
+
+.tab-content {
+    .sm_navfont {
+        font-size: $nav_fsize;
+    }
+}

@@ -1,0 +1,5 @@
+<a style="cursor: pointer" (click)="sort()" class="text-nowrap">
+    <ng-content></ng-content>
+    <span *ngIf="isAsc"> <i class="fa fa-arrow-down" aria-hidden="true"></i></span>
+    <span *ngIf="isDesc"> <i class="fa fa-arrow-up" aria-hidden="true"></i></span>
+  </a>

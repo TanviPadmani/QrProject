@@ -1,0 +1,19 @@
+.ng-select {
+    .ng-select-container{
+        min-height: $select_height;
+        border-radius: 0;
+        .ng-value-container{
+            .ng-placeholder{
+                }
+            .ng-value{
+                font-size: $ng_value_fsize;
+                color: $ng_text_color;
+                line-height: 2;
+            }
+        }
+
+    }
+}
+.dropdown-item.active, .dropdown-item:active{
+    background-color: #f8f9fa !important;
+}

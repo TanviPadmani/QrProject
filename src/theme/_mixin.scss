@@ -1,0 +1,167 @@
+
+
+@keyframes spin-reverse {
+    0% {
+      transform: rotate(0deg); 
+    }
+    100% {
+      transform: rotate(-360deg); 
+    } 
+}
+
+@keyframes spin-vertical {
+  0% {
+    transform: rotateY(0deg); 
+  }
+  100% {
+    transform: rotateY(360deg); 
+  } 
+}
+@keyframes spin {
+    0% {
+      transform: rotate(0deg); }
+  
+    100% {
+      transform: rotate(360deg); } }
+@keyframes blink {
+    0% {
+      opacity: .3; }
+  
+    25% {
+      opacity: .6; }
+  
+    50% {
+      opacity: 1; }
+  
+    75% {
+      opacity: .6; }
+  
+    100% {
+      opacity: .3; } 
+}
+  @keyframes blink-alt {
+    0% {
+      opacity: 1; }
+  
+    25% {
+      opacity: .6; }
+  
+    50% {
+      opacity: .3; }
+  
+    75% {
+      opacity: .6; }
+  
+    100% {
+      opacity: 1; } 
+}
+.imageRotateHorizontal{
+  -moz-animation: spinHorizontal 2s infinite linear;
+  -o-animation: spinHorizontal 2s infinite linear;    
+  -webkit-animation: spinHorizontal 2s infinite linear;
+  animation: spinHorizontal 2s infinite linear;
+}
+
+@-moz-keyframes spinHorizontal {
+  0% {
+      -moz-transform: rotateY(0deg);
+  }
+
+  100% {
+      -moz-transform: rotateY(360deg);
+  }
+}
+
+@keyframes spinHorizontal {
+0% { 
+      transform: rotateY(0deg); 
+}
+  100% {
+      transform: rotateY(360deg);
+  }
+}
+
+
+@-ms-keyframes spinHorizontal {
+0% { 
+      -ms-transform: rotateY(0deg); 
+}
+  100% {
+      -ms-transform: rotateY(360deg);
+  }
+}
+
+@-o-keyframes spinHorizontal {
+0% { 
+      -o-transform: rotateY(0deg); 
+}
+100% { 
+      -o-transform: rotateY(360deg); 
+}
+}
+
+@-webkit-keyframes spinHorizontal {
+0% { 
+      -webkit-transform: rotateY(0deg); 
+}
+100% { 
+      -webkit-transform: rotateY(360deg); 
+}
+}
+
+/*
+$x = set (row,column);
+$y = set (noraml);
+use other scss file like this  @include flex-dir(column,normal);
+*/
+@mixin flex-dir($x,$y){
+    -webkit-box-direction: $y;
+    -ms-flex-direction: $x;
+    flex-direction: $x;
+}
+
+/*
+$a = set property for example (all,opacity);
+$x = set duration (0.4s);
+use other scss file like this  @include easein(all,0.15s);
+*/
+@mixin easein($a:all,$x: 0.4s){
+    -moz-transition: $a $x ease-in-out;
+    -o-transition: $a $x ease-in-out;
+    -webkit-transition: $a $x ease-in-out;
+    transition: $a $x ease-in-out;
+}
+
+@mixin ease-all {
+    -webkit-transition: .3s ease all;
+    -moz-transition: .3s ease all;
+    -o-transition: .3s ease all;
+    transition: .3s ease all;
+}
+/*
+$a = set property for example (spin,spin-reverse,blink,blink-alt);
+$x = set duration (0.4s);
+use other scss file like this  @include easein(all,0.15s);
+*/
+@mixin spin($a:spin,$x:30s) {
+    -webkit-animation:  $a $x linear infinite;
+    animation:  $a $x linear infinite;
+}
+
+@mixin svg($w,$h){
+    width: $w;   /* Use Default bootstrap varible to set width value(rem)*/
+    height: $h; /* Use Default bootstrap varible to set height value(rem)*/
+    cursor: pointer;
+}
+
+/* Effect on round chart */
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@mixin fade-in {
+	opacity:0; 
+	animation:fadeIn ease-in 1;
+	animation-fill-mode:forwards;
+	animation-duration:1s;
+} 
+@mixin fade-out {
+animation-delay: 0.5s;
+}

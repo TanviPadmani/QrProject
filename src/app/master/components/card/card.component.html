@@ -1,0 +1,431 @@
+<nav class="navbar flex-column flex-md-row navbar-dark px-3">
+    <div class="d-block d-md-flex justify-content-between align-items-center w-100">
+        <div class="d-flex justify-content-start align-items-center">
+            <h1 class="text-capitalize mb-0 fw-300">Add Card</h1>
+        </div>
+    </div>
+</nav>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">
+    <div class="col-md-12 container-v2 round_slider mb-3 p-4">
+        <div class="row p-4">
+            <div class="col-md-12 mt-4">
+                <div class="d-flex align-items-center">
+                    <a class="cursor-pointer me-4">
+                        <i csSvgIcon="cs_back_arrow"></i>
+                    </a>
+                    <div class="col-3">
+                        <input type="text" class="form-control bg-white" id="exampleFormControlInput1"
+                            placeholder="Card Name" formControlName="card_name" [class.is-invalid]="myForm.get('card_name').invalid && myForm.get('card_name').touched"
+                           >
+                        <div *ngIf="myForm.get('card_name').invalid && myForm.get('card_name').touched"
+                            class="text-danger">Card Name is required</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row p-4">
+            <div class="col-md-8">
+                <div class="row border rounded-3">
+
+                    <div class="row mt-5 mb-4">
+                        <div class="col-md-6">
+                            <div class="card border-0 browse-card" style="max-width: 540px;">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4 d-flex align-items-center">
+                                        <img class="card-img img-fluid border border-1 shadow"
+                                            src="../../../../assets/images/dummy-prof-pic.png">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Upload a Profile Photo</h5>
+                                            <p class="card-text">Required dimension: Minimum 400px by 400px
+                                                Size limit: 200KB</p>
+                                            <!-- <a href="#" class="btn btn-primary btn-lg px-4">Browse</a> -->
+                                            <label for="file-upload" class="btn btn-primary btn-lg px-4">Browse</label>
+                                            <input id="file-upload" class="form-control" type="file"
+                                                (change)="onChange($event)" style="display: none;"
+                                                formControlName="profile_photo">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card border-0 browse-card" style="max-width: 540px;">
+                                <div class="row no-gutters">
+                                    <div class="col-md-4 d-flex align-items-center">
+                                        <img class="card-img img-fluid border border-1 shadow"
+                                            src="../../../../assets/images/dummy-prof-pic.png">
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Logo</h5>
+                                            <p class="card-text">Required dimension: Minimum 400px by 400px
+                                                Size limit: 200KB</p>
+                                            <!-- <a href="#" class="btn btn-primary btn-lg px-4">Browse</a> -->
+                                            <label for="logo-upload" class="btn btn-primary btn-lg px-4">Browse</label>
+                                            <input id="logo-upload" class="form-control" type="file"
+                                                (change)="onChangeLogo($event)" style="display: none;"
+                                                formControlName="company_logo">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="row pe-0 ps-4 py-4">
+                        <div class="col-md-6">
+                            <div>
+                                <label for="inputEmail4" class="form-label">Select Color</label>
+                            </div>
+                            <div class="d-flex align-items-center py-4">
+                                <span *ngFor="let c of color" class="circle cursor-pointer mx-2 bg-{{c.name}}"
+                                    [value]="c.id" (click)="selectColor(c)"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div>
+                                <label for="inputEmail4" class="form-label">Apply Custom Color</label>
+                            </div>
+                            <div class="py-4">
+                                <div class="input-group">
+                                    <!-- <div class="input-group-text d-flex justify-content-center bg-skyblue"></div>
+                                    <input type="text" class="form-control bg-white form-control-lg"> -->
+                                    <input type="color" class="input-group-text d-flex justify-content-center p-0"
+                                        (change)="onColorChange($event)" >
+                                    <input type="text" class="form-control bg-white form-control-lg" name="color" formControlName="color_theme"
+                                        [value]="selectedColor"  >
+                                        
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 bg-pale-lavender">
+                        <div class="text-primary form-header font-weight-500 py-2">
+                            Basic Informaiton
+                        </div>
+                    </div>
+                    <div class="row pe-0 ps-4 py-4">
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">First Name</label>
+                            <input type="text" class="form-control bg-white form-control-lg" id="firstName" formControlName="first_name" [class.is-invalid]="myForm.get('first_name').invalid && myForm.get('first_name').touched"  >
+                            <div class="text-danger" *ngIf="myForm.get('first_name').invalid && myForm.get('first_name').touched">
+                                please enter firstname
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Last Name</label>
+                            <input type="text" class="form-control bg-white form-control-lg" formControlName="last_name"  (change)="updatePreviewName()" [class.is-invalid]="myForm.get('last_name').invalid && myForm.get('last_name').touched">
+                            <div class="text-danger" *ngIf="myForm.get('last_name').invalid && myForm.get('last_name').touched">
+                                please enter lastname
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputAddress" class="form-label">Mobile</label>
+                            <input type="number" class="form-control bg-white form-control-lg" formControlName="mobile_number" [class.is-invalid]="myForm.get('mobile_number').invalid && myForm.get('mobile_number').touched"   >
+                            <div class="text-danger" *ngIf="myForm.get('mobile_number').invalid && myForm.get('mobile_number').touched">
+                                <div *ngIf="myForm.get('mobile_number').errors.required">Please enter a contact number.</div>
+                                 <div *ngIf="myForm.get('mobile_number').errors.pattern">Please enter a valid 10-digit contact number.</div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputAddress2" class="form-label">Email</label>
+                            <input type="email" class="form-control bg-white form-control-lg" formControlName="email"  (change)="updateMobile_Email()" [class.is-invalid]="myForm.get('email').invalid && myForm.get('email').touched">
+                            <div class="text-danger" *ngIf="myForm.get('email').invalid && myForm.get('email').touched">
+                                <div *ngIf="myForm.get('email').errors.required">Please enter an email address.</div>
+                                <div *ngIf="myForm.get('email').errors.email">Please enter a valid email address.</div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputCity" class="form-label">Your Company Name</label>
+                            <input type="text" class="form-control bg-white form-control-lg" formControlName="company_name"  [class.is-invalid]="myForm.get('company_name').invalid && myForm.get('company_name').touched"  >
+                            <div class="text-danger" *ngIf="myForm.get('company_name').invalid && myForm.get('company_name').touched">
+                                please enter company name
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputZip" class="form-label">Your Job Title</label>
+                            <input type="text" class="form-control bg-white form-control-lg" formControlName="job_title" [class.is-invalid]="myForm.get('job_title').invalid && myForm.get('job_title').touched" >
+                            <div class="text-danger"  *ngIf="myForm.get('job_title').invalid && myForm.get('job_title').touched">
+                                please enter job title
+                            </div>
+
+                        </div>
+                        <div class="col-12">
+                            <label for="inputAddress2" class="form-label">Address</label>
+                            <textarea class="form-control bg-white" id="exampleFormControlTextarea1" rows="3" formControlName="address" [class.is-invalid]="myForm.get('address').invalid && myForm.get('address').touched"  ></textarea>
+                            <div class="text-danger" *ngIf="myForm.get('address').invalid && myForm.get('address').touched">
+                                please enter your address
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12 bg-pale-lavender">
+                        <div class="text-primary form-header font-weight-500 py-2">
+                            Web Links
+                        </div>
+                    </div>
+                    <div class="row pe-0 ps-4 py-4">
+                        <div class="col-md-6">
+                            <label for="inputEmail4" class="form-label">Company Website</label>
+                            <input type="text" class="form-control bg-white form-control-lg" formControlName="company_website" (change)="updateAddress_Web()">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword4" class="form-label">Your Website</label>
+                            <input type="text" class="form-control bg-white form-control-lg" formControlName="personal_website">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-12 bg-pale-lavender">
+                        <div class="text-primary form-header font-weight-500 py-2">
+                            Social Media
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-6" *ngFor="let item of social">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text border-end-0" id=""><i csSvgIcon="cs_{{item.name}}"></i></span>
+                            <input type="text" class="form-control bg-transparent border-start-0"
+                                placeholder="{{item.name}}" aria-label="" aria-describedby="">
+                        </div>
+                    </div> -->
+                    <div class="row pe-0 ps-4 py-4">
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-text d-flex justify-content-center"><i
+                                        csSvgIcon="cs_facebook"></i>
+                                </div>
+                                <input type="text" class="form-control bg-white form-control-lg"
+                                    formControlName="facebook_link" (change)="updateFB()">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-text d-flex justify-content-center"><i csSvgIcon="cs_twitter"></i></div>
+                                <input type="text" class="form-control bg-white form-control-lg" formControlName="twitter_link" (change)="updateTwitter()" >
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-text d-flex justify-content-center"><i
+                                        csSvgIcon="cs_linkedin"></i>
+                                </div>
+                                <input type="text" class="form-control bg-white form-control-lg" formControlName="linkedin_link" (change)="updateLinkdin()" >
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-text d-flex justify-content-center"><i
+                                        csSvgIcon="cs_instagram"></i>
+                                </div>
+                                <input type="text" class="form-control bg-white form-control-lg" formControlName="instagram_link" (change)="updateInstagaram()">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-text d-flex justify-content-center"><i csSvgIcon="cs_skype"></i>
+                                </div>
+                                <input type="text" class="form-control bg-white form-control-lg"
+                                    formControlName="skype_id">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-text d-flex justify-content-center"><i
+                                        csSvgIcon="cs_behance"></i></div>
+                                <input type="text" class="form-control bg-white form-control-lg"
+                                    formControlName="behance_link">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-text d-flex justify-content-center"><i csSvgIcon="cs_zing"></i>
+                                </div>
+                                <input type="text" class="form-control bg-white form-control-lg"
+                                    formControlName="xing_link">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-text d-flex justify-content-center"><i
+                                        csSvgIcon="cs_youtube"></i></div>
+                                <input type="text" class="form-control bg-white form-control-lg"
+                                    formControlName="youtube_link">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-text d-flex justify-content-center"><i
+                                        csSvgIcon="cs_whatsapp"></i>
+                                </div>
+                                <input type="text" class="form-control bg-white form-control-lg"
+                                    formControlName="whatsapp_link">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-text d-flex justify-content-center"><i
+                                        csSvgIcon="cs_telegram"></i>
+                                </div>
+                                <input type="text" class="form-control bg-white form-control-lg"
+                                    formControlName="telegram_link">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-text d-flex justify-content-center"><i
+                                        csSvgIcon="cs_tiktok"></i></div>
+                                <input type="text" class="form-control bg-white form-control-lg"
+                                    formControlName="tiktok_link">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="input-group mb-3">
+                                <div class="input-group-text d-flex justify-content-center"><i
+                                        csSvgIcon="cs_sharefile"></i>
+                                </div>
+                                <input type="text" class="form-control bg-white form-control-lg"
+                                    formControlName="sharefile_link">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr>
+                    <div class="col-12 text-end p-4">
+                        <button type="reset" class="btn btn-secondary btn-cancel btn-lg px-4">Cancel</button>
+                        <button type="submit" value="submit" class="btn btn-primary ms-3 btn-lg px-4" [disabled]="!myForm.valid">Save</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="row ps-4">
+                    <div class="col-md-12 border rounded-3 p-4 bg-pale-lavender">
+                        <div class="card bg-white border rounded-3">
+                            <div class="position-relative">
+                                <img id="preview-image" src="../../../../assets/images/dummy-prof-pic.png"
+                                    class="card-img-top img-fluid" alt="...">
+                                <div class="position-absolute w-100 overflow-hidden shape-svg bottom-0">
+                                    <i>
+                                        <svg [ngStyle]="{fill:selectedColor}" xmlns="http://www.w3.org/2000/svg"
+                                            height="173" viewBox="0 0 400 173" fill="none">
+                                            <path
+                                                d="M400 108.97V14.175C281.883 -50.4307 199.328 126.48 139 131.311C238.489 168.098 295.656 163.074 400 108.97Z" />
+                                            <path
+                                                d="M0 41C122.122 145.525 260.523 190.824 400 103.509V115.912C252.055 185.367 163.24 172.081 0 51.9143V41Z" />
+                                            <path d="M0 48C122.122 152.525 246 190.5 400 110.509V173H0V48Z"
+                                                fill="white" />
+                                        </svg>
+                                    </i>
+                                    <div class="position-absolute right-10 bottom-40 text-end w-50 overflow-hidden">
+                                        <img id='preview-logo' src="../../../../assets/images/logo-innrly.png" alt=""
+                                            class="img-fluid w-50">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="text-dark text-center">{{ previewName }}</h5>
+                                <!-- <p class="text-dark text-center font-weight-500 text-black">Precident / CEO - INNRLY</p> -->
+                                <div class="d-grid">
+                                    <div *ngIf="showPreview" class="d-flex py-2">
+                                        <div>
+                                            <a class="rounded-circle p-3 bg-skyblue">
+                                                <i csSvgIcon="cs_email"></i>
+                                            </a>
+                                        </div>
+                                        <div class="ms-3">
+                                            <p>{{prieviewEmail}}</p>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="showPreview" class="d-flex py-2">
+                                        <div>
+                                            <a class="rounded-circle p-3 bg-skyblue">
+                                                <i csSvgIcon="cs_phone"></i>
+                                            </a>
+                                        </div>
+                                        <div class="ms-3">
+                                            <p>{{previeContact}}</p>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="showSecondPreview" class="d-flex my-2">
+                                        <div>
+                                            <a class="rounded-circle p-3 bg-skyblue">
+                                                <i csSvgIcon="cs_loaction"></i>
+                                            </a>
+                                        </div>
+                                        <div class="ms-3">
+                                            <p>{{prieviewAddress}}</p>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="showSecondPreview" class="d-flex my-2">
+                                        <div>
+                                            <a class="rounded-circle p-3 bg-skyblue">
+                                                <i csSvgIcon="cs_web"></i>
+                                            </a>
+                                        </div>
+                                        <div class="ms-3">
+                                            <p>{{previewWeb}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center pt-4">
+                            <button type="button" class="btn btn-primary btn-lg px-4" (click)="previewPopUp()">Click to
+                                Preview</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row ps-4 py-5">
+                    <div class="col-md-12 border rounded-3 px-0 bg-pale-lavender">
+                        <h6 class="text-primary form-header font-weight-500 text-center pt-3">
+                            QR Code
+                        </h6>
+                        <hr>
+                        <div class="p-4 pb-0">
+                            <div class="border rounded-3 p-2 d-flex bg-white">
+                                <div class="mx-5">
+                                    <div *ngIf="squareqr">
+                                        <img #qrImage src="../../../../assets/images/QR-Shapes/qr_code_square.svg"
+                                            class="img-fluid">
+                                    </div>
+                                    <div *ngIf="!squareqr" class="qr-code-container">
+                                        <img #qrImage src="../../../../assets/images/QR-Shapes/qr_code_square.svg"
+                                            class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center py-4">
+                            <button type="button" class="btn btn-primary btn-lg px-4" (click)="qrCodePopUp()">Design
+                                Your QR
+                                Code</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

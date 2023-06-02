@@ -1,0 +1,132 @@
+.page-loader{
+    .page-loader-inner{
+        height: calc(100vh - 6rem);
+        background: $white; // Bootstrap default variable
+        z-index: 10;
+        .loader-main{
+            background-color: $white; // Bootstrap default variable
+            -webkit-box-shadow: $page_loader_shadow;
+            -moz-box-shadow: $page_loader_shadow;
+            box-shadow:$page_loader_shadow;
+            padding: $page_loader_p;
+            border-radius: $page_loader_radius;
+        }
+    }
+
+}
+.loader-area{
+    i{
+        width: auto;
+        height: auto;
+        display: block;
+    }
+    .dotted-big-circle{
+        fill: none;
+        stroke: $dark;
+        stroke-linecap: round;
+        stroke-width: $loader-stock-w;
+        stroke-dasharray: 1 17;
+        @include spin(spin,60s);
+        position: relative;
+
+    }
+    .dotted-small-circle{
+        fill: none;
+        stroke: lighten($text-color,50%);
+        stroke-linecap: round;
+        stroke-width: $loader-stock-w;
+        stroke-dasharray: 65 22;
+        @include spin(spin-reverse,30s);
+        position: absolute;
+        top: $loader-top;
+        left:$loader-top;
+    }
+    .loader03 {        
+        position: absolute;
+        top: $loader-top ;
+        left: $loader-left;
+        @include ease-all;
+    }
+    .spin-vertical{
+        @include spin(spin-vertical,3s);
+        @include ease-all;
+    }
+}.loader-text{
+    color: lighten($text-color, 35%)
+}
+
+.flash_loader {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    background-color: #d3d3d3;
+    z-index: 1020;
+    height: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+        @at-root div[cs_loader="true"] {
+            position: relative;
+            overflow: hidden;
+        }
+        @at-root div[cs_loader="false"] #{&} {
+            display: none;
+        }
+    *,&:before,
+    &:after{
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    *{
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-flow: column;
+        flex-flow: column;
+    }
+    &:before{
+        content: " ";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 50%;
+        z-index: 1;
+        width: 500%;
+        margin-left: -250%;
+        -webkit-animation: FlashAnimation 1.4s linear infinite;
+                animation: FlashAnimation 1.4s linear infinite;
+        background: -webkit-gradient(linear, left top, right top, color-stop(46%, rgba(255, 255, 255, 0)), color-stop(50%, rgba(255, 255, 255, 0.35)), color-stop(54%, rgba(255, 255, 255, 0))) 50% 50%;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0) 46%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0) 54%) 50% 50%;
+    }
+}
+
+@-webkit-keyframes FlashAnimation {
+    0% {
+        -webkit-transform: translate3d(-30%, 0, 0);
+                transform: translate3d(-30%, 0, 0);
+        }
+    100% {
+        -webkit-transform: translate3d(30%, 0, 0);
+                transform: translate3d(30%, 0, 0);
+        }
+}
+
+@keyframes FlashAnimation {
+0% {
+    -webkit-transform: translate3d(-30%, 0, 0);
+            transform: translate3d(-30%, 0, 0);
+    }
+100% {
+    -webkit-transform: translate3d(30%, 0, 0);
+            transform: translate3d(30%, 0, 0);
+    }
+}

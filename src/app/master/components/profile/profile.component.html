@@ -1,0 +1,162 @@
+<div [ngSwitch]="dataStatus">
+    <div *ngSwitchCase="dataStatusEnum.DataAvailable">
+      <div class="card card-body border-0 p-0">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="page-header position-relative px-3 mb-3">
+              <div class="title-heading">
+                <h3 class="title-title text-uppercase text-primary">
+                  {{'TOP_BAR_PROFILE' | translate}}
+                </h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header bg-light">
+          <span class="text-uppercase text-navblue font-weight-bold"> {{'TOP_BAR_PROFILE' | translate}}</span>
+        </div>
+        <div class="card-body">
+          <div class="col-md-8 p-0"> <!--add col-md-12 for patient profile-->
+            <form [formGroup]="detailForm" (ngSubmit)="onSubmit()" csFocusFirstInvalidField>
+              <!-- <div class="form-row">
+                <div class="form-group col-md-6">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <img *ngIf="imageData" src="{{imageData}}" width="100" height="100" />
+                    </div>
+                    <div class="justify-content-center align-self-center col-md-10">
+                      <input type="file" id="image" style="display: none;" (change)="onFileChange($event)"
+                        accept=".png,.jpg,.jpeg">
+                      <div class="bg-white border px-3 py-1 d-flex h-100"
+                        onclick="document.getElementById('image').click();">
+                        <i csSvgIcon="cs_import"></i><small class="py-1 px-2">{{'PLEASE_CLICK_HERE' | translate}}</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="input-fullName">{{'fullName' | translate }}</label>
+                  <input type="text" autocomplete="off" class="form-control" formControlName="fullName" id="input-fullName"
+                   [ngClass]="{ 'is-invalid' : isInvalid(fullName) }">
+                  <div *ngIf="isInvalid(fullName)">
+                    <small class="alert alert-danger p-1" *ngIf="fullName.errors?.required">
+                      {{'fullName' | translate}} {{'FIELD_REQUIRED' | translate}}
+                    </small>
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="input-email">{{'email' | translate }}
+                    <!-- <sup class="text-danger">*</sup> -->
+                  </label>
+                  <input type="text" autocomplete="off" class="form-control" formControlName="email" id="input-email"
+                   [ngClass]="{ 'is-invalid' : isInvalid(email) }" readonly>
+                  <div *ngIf="isInvalid(email)">
+                    <small class="alert alert-danger p-1" *ngIf="email.errors?.required">
+                      {{'email' | translate}} {{'FIELD_REQUIRED' | translate}}
+                    </small>
+                    <small class="alert alert-danger p-1" *ngIf="email.errors?.email">
+                      {{'FIELD_EMAIL_ERROR' | translate}}
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="input-phoneNumber">{{'phoneNumber' | translate }}</label>
+                  <input type="text" autocomplete="off" class="form-control" formControlName="phoneNumber" id="input-phoneNumber"
+                    [ngClass]="{ 'is-invalid' : isInvalid(phoneNumber) }">
+                  <div *ngIf="isInvalid(phoneNumber)">
+                    <small class="alert alert-danger p-1" *ngIf="phoneNumber.errors?.pattern">
+                      {{'PHONE_ERROR' | translate}}
+                    </small>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label>First Name</label>
+                    <input type="text" class="form-control"  autocomplete="off">
+                  
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control"  autocomplete="off">
+                  
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Phone Number</label>
+                    <input type="text" class="form-control"  autocomplete="off">
+                  
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Alternate Phone Number</label>
+                    <input type="text" class="form-control"  autocomplete="off">
+                  
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Educational Level</label>
+                    <input type="text" class="form-control"  autocomplete="off">
+                  
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Age</label>
+                    <input type="text" class="form-control"  autocomplete="off">
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Gender</label>
+                    <div class="d-flex align-items-center">
+                  <ng-select class="col-md-12 p-0"></ng-select>
+                    </div>
+                  
+                </div>
+              
+              
+               
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Address</label>
+                    <textarea class="form-control"
+                    rows="4" >
+                        </textarea>
+  
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Comments</label>
+                    <textarea class="form-control"
+                    rows="4" >
+                        </textarea>
+                  
+                </div>
+             
+                
+               
+            </div> -->
+              <div class="d-md-flex">
+                <button type="submit" class="btn rounded-0 btn-primary text-capitalize mr-3"
+                  [disabled]="submitted || !detailForm.dirty">
+                  <span *ngIf="submitted" class="spinner-border spinner-border-sm"></span>
+                  {{'BUTTON_SAVE' | translate }}
+                </button>
+                <button type="button" class="btn rounded-0 btn-primary text-capitalize mt-2 mt-md-0" (click)="onCancel()">
+                  {{'BUTTON_CANCEL' |translate }}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <cs-loading *ngSwitchCase="dataStatusEnum.Fetching">
+    </cs-loading>
+    <cs-error-detail [errorDetail]="errorDetail" *ngSwitchCase="dataStatusEnum.Error">
+    </cs-error-detail>
+  </div>

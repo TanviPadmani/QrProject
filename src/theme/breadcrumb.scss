@@ -1,0 +1,36 @@
+.page-header{
+    &:before{
+        top: 2px;
+        left:0;
+        content: '';
+        position:absolute;
+        border-left: 3px solid $dark;
+        height: 76%;
+        
+    }
+    .breadcrumb{
+        .breadcrumb-item{
+            font-size: $brcrm-font-size;
+            cursor: default;
+        }
+    }
+    .title-heading{
+        .title-title{
+            color:$gray-600;
+            font-size:$title-font-size;
+            @media (min-width: 992px) and (max-width: 1400px){
+                font-size:$title-font-size - 0.295;
+            }
+            strong{
+                color:$title-text-color;
+            }
+        }
+    }
+    svg{
+        @include svg($font-size-base,$font-size-base);
+    }
+    small{
+        line-height:2;
+    }
+    
+}

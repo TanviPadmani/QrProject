@@ -1,0 +1,48 @@
+<div class="fixed-left position-fixed border-right nav-overflow bg-white shadow top-0">
+  <!-- <a class="navbar-brand mr-0 bg-primary" routerLink="/dashboard">
+    <span class="d-flex justify-content-center ml-0">
+        <img src="../../../../assets/images/logo-innrly.svg" class="img-fluid" />
+    </span>
+  </a> -->
+  <div class="logo text-center p-4 mr-0 bg-primary" routerLink="/dashboard">
+    <span class="d-flex justify-content-center ml-0">
+      <img src="../../../../assets/images/logo-innrly.svg" height="35px" name="INNRLY" alt="INNRLY" />
+    </span>
+  </div>
+    <!-- <perfect-scrollbar style="max-height:calc(100vh - 50px);"> -->
+      <div class="navbar-collapse" id="sidebarCollapse">
+        <ul class="navbar-nav w-100">
+          <ng-container *ngFor="let menuItem of getMenu">
+            <li *ngIf="!menuItem.hasChild" class="nav-item border-bottom border-white py-2" [routerLink]="menuItem.routerLink"
+              [routerLinkActiveOptions]="{exact: false}" routerLinkActive="active">
+              <a class="nav-link d-flex px-5" (click)="menuItem.onClick()">
+                <i [csSvgIcon]="menuItem.svgIconName"></i>
+                <span class="ms-3 text-capitalize font-weight-normal">{{menuItem.title | translate }}</span>
+              </a>
+            </li>
+            <li *ngIf="menuItem.hasChild" class="position-relative nav-item dropdown border-bottom border-white py-2"
+            [class.active]="isLinkActive(menuItem)"
+             [ngClass]="menuItem.expanded ? 'show' : ''" (click)="menuItem.onClick()">
+              <span class="nav-link d-flex dropdown-toggle position-relative px-5">
+                <i [csSvgIcon]="menuItem.svgIconName"></i>
+                <span class="ms-3 text-capitalize font-weight-normal">{{menuItem.title | translate }}</span>
+              </span>
+              <div class="dropdown-menu border-0 position-static"
+                [ngClass]="(menuItem.expanded && (navService.isMobileView || !navService.hideSideNav)) && navService.isPopupMenu ? 'show' : ''">
+                <span class="text-primary border-bottom dropdown-item d-flex text-captalizefont-weight-normal" *ngIf="navService.hideSideNav"
+                [ngClass]="{'text-primary':isLinkActive(menuItem)}">{{menuItem.title | translate }}</span>
+                <a *ngFor="let subItem of menuItem.children" class="dropdown-item d-flex"
+                  [routerLink]="subItem.routerLink" 
+                  [class.active]="isLinkActive(subItem)"
+                  (click)="subItem.onClick();$event.stopPropagation()">
+                  <i [csSvgIcon]="subItem.svgIconName"></i>
+                  <span class="ms-3 text-capitalize font-weight-normal">{{subItem.title | translate }}</span>
+                </a>
+              </div>
+            </li>
+          </ng-container>
+        </ul>
+      </div>
+    <!-- </perfect-scrollbar> -->
+  </div>
+  <!-- / .navbar-collapse -->

@@ -1,0 +1,227 @@
+<!-- <div class="container">
+  <div class="card">
+    <div class="card-header text-center">
+      <span>&#9733; <b>{{'TITLE_MAIL_SETTING' | translate }}</b> &#9733;</span>
+      <small class="form-text sub-title text-info">{{'TEXT_FILL_BELOW_DETAIL' | translate}}</small>
+    </div>
+
+    <div class="card-body">
+      <form [formGroup]="detailForm" (ngSubmit)="submit()">
+        <div class="row">
+          <div class="col col-md-6 col-12">
+            <div class="form-group">
+              <label for="input-userName">{{'userName' | translate }}</label>
+              <input type="text" class="form-control" formControlName="userName" id="input-userName"
+                placeholder="{{'userName' | translate }}" [ngClass]= "{ 'is-invalid' : isInvalid(userName) }" >
+              <div class="invalid-feedback" *ngIf="isInvalid(userName)" >
+                <div *ngIf="userName.errors?.required">
+                  {{'userName' | translate}} {{'FIELD_REQUIRED' | translate}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col col-md-6 col-12">
+            <div class="form-group">
+              <label for="input-password">{{'password' | translate }}</label>
+              <input type="password" class="form-control" formControlName="password" id="input-password"
+                placeholder="{{'password' | translate }}" [ngClass]= "{ 'is-invalid' : isInvalid(password) }" >
+
+              <div class="invalid-feedback" *ngIf="isInvalid(password)">
+                <div *ngIf="password.errors?.required">
+                  {{'password' | translate}} {{'FIELD_REQUIRED' | translate}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-md-6 col-12">
+            <div class="form-group">
+              <label for="input-serverAddress">{{'serverAddress' | translate }}</label>
+              <input type="text" class="form-control" formControlName="serverAddress" id="input-serverAddress"
+                placeholder="{{'serverAddress' | translate }}" [ngClass]= "{ 'is-invalid' : isInvalid(serverAddress) }" >
+
+              <div class="invalid-feedback" *ngIf="isInvalid(serverAddress)">
+                <div *ngIf="serverAddress.errors?.required">
+                  {{'serverAddress' | translate}} {{'FIELD_REQUIRED' | translate}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col col-md-6 col-12">
+            <div class="form-group">
+              <label for="input-serverPort">{{'serverPort' | translate }}</label>
+              <input type="number" class="form-control" formControlName="serverPort" id="input-serverPort"
+                [ngClass]= "{ 'is-invalid' : isInvalid(serverPort) }"
+                placeholder="{{'serverPort' | translate }}" pattern="^[0-9]+$">
+              <div class="invalid-feedback" *ngIf="isInvalid(serverPort)">
+                <div *ngIf="serverPort.errors?.required">
+                  {{'serverPort' | translate}} {{'FIELD_REQUIRED' | translate}}
+                </div>
+                <div *ngIf="serverPort.errors?.pattern">
+                  {{'serverPort' | translate}} {{'FIELD_REQUIRED' | translate}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input"
+            id="isSSL" name="isSSL-input" formControlName="isSSL">
+            <label class="custom-control-label" for="isSSL">{{'isSSL' | translate }}</label>
+        </div>
+
+        <div class="form-group">
+          <label for="input-fromEmail">{{'fromEmail' | translate }}</label>
+          <input type="text" class="form-control" formControlName="fromEmail" id="input-fromEmail"
+            [ngClass]= "{ 'is-invalid' : isInvalid(fromEmail) }"
+            placeholder="{{'fromEmail' | translate }}">
+
+          <div class="invalid-feedback" *ngIf="isInvalid(fromEmail)">
+            <div *ngIf="fromEmail.errors?.required">
+              {{'fromEmail' | translate}} {{'FIELD_REQUIRED' | translate}}
+            </div>
+            <div *ngIf="fromEmail.errors?.email">
+              {{'FIELD_EMAIL_ERROR' | translate}}
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="submitted || !detailForm.dirty" class="btn btn-outline-primary mr-2">
+            <span *ngIf="submitted" class="spinner-border spinner-border-sm"></span>
+            {{'BUTTON_SAVE' | translate }}
+        </button>
+        <a routerLink="/dashboard" class="btn btn-outline-secondary"> {{'BUTTON_CANCEL' | translate }} </a>
+
+      </form>
+    </div>
+  </div>
+</div> -->
+
+<div [ngSwitch]="dataStatus">
+    <div *ngSwitchCase="dataStatusEnum.DataAvailable">
+      <div class="card card-body border-0 p-0">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="page-header position-relative px-3 mb-3">
+              <div class="title-heading">
+                <h3 class="title-title text-uppercase text-primary">
+                  {{'TITLE_MAIL_SETTING' | translate }}
+                </h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+          </div>
+        </div>
+      </div>
+      <div class="card rounded-0">
+        <div class="card-header bg-light">
+          <span class="text-uppercase text-navblue font-weight-bold"> {{'TITLE_MAIL_SETTING' | translate }}</span>
+        </div>
+        <div class="card-body">
+          <div class="col-md-8 p-0">
+            <form [formGroup]="detailForm" (ngSubmit)="submit()" csFocusFirstInvalidField>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="input-userName">{{'userName' | translate }}</label>
+                  <input type="text" class="form-control" formControlName="userName" id="input-userName" autocomplete="off"
+                    placeholder="{{'userName' | translate }}" [ngClass]="{ 'is-invalid' : isInvalid(userName) }">
+                  <div *ngIf="isInvalid(userName)">
+                    <small class="alert alert-danger p-1" *ngIf="userName.errors?.required">
+                      {{'userName' | translate}} {{'FIELD_REQUIRED' | translate}}
+                    </small>
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="input-password">{{'password' | translate }}</label>
+                  <input type="password" class="form-control" formControlName="password" id="input-password"
+                    placeholder="{{'password' | translate }}" [ngClass]="{ 'is-invalid' : isInvalid(password) }">
+                  <div *ngIf="isInvalid(password)">
+                    <small class="alert alert-danger p-1" *ngIf="password.errors?.required">
+                      {{'password' | translate}} {{'FIELD_REQUIRED' | translate}}
+                    </small>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="input-serverAddress">{{'serverAddress' | translate }}</label>
+                  <input type="text" class="form-control" formControlName="serverAddress" id="input-serverAddress" autocomplete="off"
+                    placeholder="{{'serverAddress' | translate }}"
+                    [ngClass]="{ 'is-invalid' : isInvalid(serverAddress) }">
+                  <div *ngIf="isInvalid(serverAddress)">
+                    <small class="alert alert-danger p-1" *ngIf="serverAddress.errors?.required">
+                      {{'serverAddress' | translate}} {{'FIELD_REQUIRED' | translate}}
+                    </small>
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="input-serverPort">{{'serverPort' | translate }}</label>
+                  <input type="text" class="form-control" formControlName="serverPort" id="input-serverPort" autocomplete="off"
+                    [ngClass]="{ 'is-invalid' : isInvalid(serverPort) }"
+                    placeholder="{{'serverPort' | translate }}">
+                  <div *ngIf="isInvalid(serverPort)">
+                    <small class="alert alert-danger p-1" *ngIf="serverPort.errors?.required">
+                      {{'serverPort' | translate}} {{'FIELD_REQUIRED' | translate}}
+                    </small>
+                    <small class="alert alert-danger p-1" *ngIf="serverPort.errors?.pattern">
+                      {{'serverPort' | translate}} {{'MUST_BE_NUMBER' | translate}}
+                    </small>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="form-row">
+                <div class="form-group col-md-3 mt-4">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="isSSL" name="isSSL-input"
+                      formControlName="isSSL">
+                    <label class="custom-control-label pt-1" for="isSSL">{{'isSSL' | translate }}</label>
+                  </div>
+                </div>
+                <div class="form-group col-md-3 mt-4">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="isUsingSendGrid" name="isUsingSendGrid-input"
+                      formControlName="isUsingSendGrid">
+                    <label class="custom-control-label pt-1" for="isUsingSendGrid">{{'isUsingSendGrid' | translate }}</label>
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="input-fromEmail">{{'fromEmail' | translate }}</label>
+                  <input type="text" class="form-control" formControlName="fromEmail" id="input-fromEmail" autocomplete="off"
+                    [ngClass]="{ 'is-invalid' : isInvalid(fromEmail) }" placeholder="{{'fromEmail' | translate }}">
+                  <div *ngIf="isInvalid(fromEmail)">
+                    <small class="alert alert-danger p-1" *ngIf="fromEmail.errors?.required">
+                      {{'fromEmail' | translate}} {{'FIELD_REQUIRED' | translate}}
+                    </small>
+                    <small class="alert alert-danger p-1" *ngIf="fromEmail.errors?.email">
+                      {{'FIELD_EMAIL_ERROR' | translate}}
+                    </small>
+                  </div>
+                </div>
+              </div>
+  
+              <div class="d-md-flex">
+                <button type="submit" class="btn rounded-0 btn-primary text-capitalize mr-3"
+                  [disabled]="submitted || !detailForm.dirty">
+                  <span *ngIf="submitted" class="spinner-border spinner-border-sm"></span>
+                  {{'BUTTON_SAVE' | translate }}
+                </button>
+                <button type="button" class="btn rounded-0 btn-primary text-capitalize mt-2 mt-md-0" (click)="onCancel()">
+                  {{'BUTTON_CANCEL' |translate }}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <cs-loading *ngSwitchCase="dataStatusEnum.Fetching">
+    </cs-loading>
+    <cs-error-detail *ngSwitchCase="dataStatusEnum.Error">
+    </cs-error-detail>
+  </div>
+  

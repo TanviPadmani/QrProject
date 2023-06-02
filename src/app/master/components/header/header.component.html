@@ -1,0 +1,63 @@
+<nav class="navbar sticky-top flex-column flex-md-row border-bottom navbar-dark bg-red py-0 align-items-center pl-1">
+    <div class="logo d-flex justify-content-between align-items-center">
+        <!-- <button type="button" (click)="clickEvent()" class="navbar-toggler border-0 pl-0 m-0">
+        <i href="" csSvgIcon="cs_justify_content" *ngIf="!navService.isMenuIconLeftJustify"></i>
+        <i href="" csSvgIcon="cs_left_justify" *ngIf="navService.isMenuIconLeftJustify"></i>
+      </button> -->
+        <a class="navbar-brand mr-0 bg-primary" routerLink="/dashboard">
+            <span class="d-flex justify-content-center ml-0">
+                <img src="../../../../assets/images/inventory-icon.png" class="img-fluid" />
+            </span>
+        </a>
+    </div>
+    <div class="right-menu d-none d-md-flex" (mouseleave)="isUserInfoPopUpShown=false">
+        <!-- <a class="text-white px-3" ngbTooltip="{{'TOOLTIP_NOTIFICATION'|translate}}" placement="bottom" (mouseenter)="isUserInfoPopUpShown=false">
+        <i csSvgIcon="cs_bell"></i>
+      </a> -->
+        <div (mouseover)="isUserInfoPopUpShown=true" class="position-relative">
+            <a (click)="isUserInfoPopUpShown=!isUserInfoPopUpShown" class="text-primary px-3" placement="bottom"><i
+                    csSvgIcon="cs_user_far"></i></a>
+            <div [ngClass]="{'show':isUserInfoPopUpShown}" (mouseleave)="isUserInfoPopUpShown=false"
+                class="dropdown-menu dropdown-menu-right position-absolute mr-3" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item d-flex small header_svg" (click)="goToProfile()"><i
+                        csSvgIcon="cs_profile"></i><span class="ml-2">{{'VIEW_PROFILE'|translate}}</span></a>
+                <a class="dropdown-item d-flex small header_svg" (click)="goToChangePassword()"><i
+                        csSvgIcon="cs_key"></i><span class="ml-2">{{'TEXT_CHANGE_PASSWORD'|translate}}</span></a>
+            </div>
+        </div>
+        <a class="text-primary px-3" (mouseenter)="isUserInfoPopUpShown=false"
+            ngbTooltip="{{'TOOLTIP_LOGOUT'|translate}}" placement="bottom" (click)="logout()"><i
+                csSvgIcon="cs_circle_notch"></i>
+        </a>
+    </div>
+
+    <!-- mobile view starts from here -->
+    <div class="right-menu d-md-none">
+        <div class="nav-item d-md-none">
+            <a class="nav-link p-2 p-md-3 mb-2" (click)="toggleMobileMenuInfoPopUp()">
+                <i tabindex="" csSvgIcon="cs_ellipsis"></i>
+            </a>
+            <div class="dropdown-menu w-100 position-absolute text-primary border-rounded shadow"
+                [ngClass]="{'show':isMobileMenuPopUp}" aria-labelledby="navbarDropdown">
+                <div class="nav-item position-relative text-primary w-75 m-auto">
+                </div>
+                <div class="navbar-nav flex-row ml-md-auto justify-content-between w-75 m-auto">
+                    <!-- <a class="px-3" placement="bottom"><i csSvgIcon="cs_bell"></i>
+          </a> -->
+                    <a class="px-3" placement="bottom" (click)="isUserInfoPopUpShown = !isUserInfoPopUpShown;"><i
+                            csSvgIcon="cs_user_far"></i></a>
+                    <div [ngClass]="{'show':isUserInfoPopUpShown}"
+                        class="dropdown-menu dropdown-menu-right position-absolute mr-3"
+                        aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item d-flex small" (click)="goToProfile()"><i
+                                csSvgIcon="cs_profile"></i><span class="ml-2">{{'VIEW_PROFILE'|translate}}</span></a>
+                        <a class="dropdown-item d-flex small" (click)="goToChangePassword()"><i
+                                csSvgIcon="cs_key"></i><span
+                                class="ml-2">{{'TEXT_CHANGE_PASSWORD'|translate}}</span></a>
+                    </div>
+                    <a class="px-3" placement="bottom" (click)="logout()"><i csSvgIcon="cs_circle_notch"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

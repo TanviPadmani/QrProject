@@ -27,7 +27,8 @@ export const environment = {
       var setting = {
         rootURL: '/',
         // apiServiceUrl: 'http://localhost:58062',
-        apiServiceUrl: 'https://genapi.confidosoftsolutions.com',
+        // apiServiceUrl: 'https://genapi.confidosoftsolutions.com',
+        apiServiceUrl: 'http://13.49.175.44',
         //captchaKey: '6LeKelEUAAAAAIVIRFXqj5YcWlvzaxjhUaMgMqdR', //google captcha key .
         captchaKey: '6LeMWhMaAAAAAIdY1BDd2CRx9Q_m0LYZ8_-qCeGV',
       }

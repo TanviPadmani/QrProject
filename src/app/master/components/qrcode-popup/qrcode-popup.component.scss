@@ -1,0 +1,31 @@
+// .logo-container {
+//     position: relative;
+//     display:inline-flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
+
+//   .logo-img {
+//     max-height: 150px; /* Set the maximum height for the logo image */
+//     max-width: 150px; /* Set the maximum width for the logo image */
+//     object-fit: contain;
+//     background-repeat: no-repeat;
+//     background-size: cover; /* Preserve aspect ratio while fitting the image within the specified dimensions */
+//   }
+
+.m1-5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+.logo-container {
+  position: absolute;
+  top: 55%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+}
+
+.image-container {
+  position: relative;
+}

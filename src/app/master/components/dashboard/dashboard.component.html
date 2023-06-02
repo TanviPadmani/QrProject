@@ -7,7 +7,7 @@
 </nav>
 
 <div class="row container-v2 round_slider mb-3 p-4">
-  <div class="col-md-3">
+  <div class="col-md-3 mb-3">
     <div class="card add-card h-100">
       <div class="card-body d-flex align-items-center justify-content-center">
         <div class="text-center cursor-pointer" (click)="onClick()">
@@ -18,37 +18,47 @@
       </div>
     </div>
   </div>
-  <div class="col-md-3" *ngFor="let color of color">
+  <div class="col-md-3 mb-3" *ngFor="let user of data; let i = index">
     <div class="card bg-white">
       <div class="position-relative">
-        <img src="../../../../assets/images/dummy-prof-pic.png" class="card-img-top img-fluid"
-          alt="...">
+        <!-- <img src="../../../../assets/images/abc.png" class="card-img-top img-fluid" alt="..."> -->
+        <!-- <img [src]="user.profile_photo" class="card-img-top img-fluid" alt="....">   -->
+        <img [src]="user.profile_photo" class="card-img-top img-fluid" alt="Profile Photo" style="height: 400px;">
         <div class="position-absolute w-100 overflow-hidden shape-svg bottom-0">
           <i>
-            <svg [ngStyle]="{'fill': color.name}" xmlns="http://www.w3.org/2000/svg" height="173" viewBox="0 0 400 173" fill="none">
-              <path d="M400 108.97V14.175C281.883 -50.4307 199.328 126.48 139 131.311C238.489 168.098 295.656 163.074 400 108.97Z"/>
-              <path d="M0 41C122.122 145.525 260.523 190.824 400 103.509V115.912C252.055 185.367 163.24 172.081 0 51.9143V41Z"/>
-              <path d="M0 48C122.122 152.525 246 190.5 400 110.509V173H0V48Z" fill="white"/>
+            <svg [ngStyle]="{'fill':user.color_theme}" xmlns="http://www.w3.org/2000/svg" height="173"
+              viewBox="0 0 400 173" fill="none">
+              <path
+                d="M400 108.97V14.175C281.883 -50.4307 199.328 126.48 139 131.311C238.489 168.098 295.656 163.074 400 108.97Z" />
+              <path
+                d="M0 41C122.122 145.525 260.523 190.824 400 103.509V115.912C252.055 185.367 163.24 172.081 0 51.9143V41Z" />
+              <path d="M0 48C122.122 152.525 246 190.5 400 110.509V173H0V48Z" fill="white" />
             </svg>
           </i>
-          <div class="position-absolute right-10 bottom-40 text-end w-50 overflow-hidden">
-            <img src="../../../../assets/images/logo-innrly.png" alt="" class="img-fluid w-50">
+          <div class="position-absolute right-10 bottom-40 text-end w-50 overaflow-hidden">
+            <!-- <img src="../../../../assets/images/logo-innrly.png" alt="" class="img-fluid w-50"> -->
+            <img [src]="user.company_logo" alt="" class="img-fluid w-50">
           </div>
         </div>
       </div>
       <div class="card-body">
-        <h5 class="text-dark text-center">Vimal Patel</h5>
-        <p class="text-dark text-center">Business Card</p>
+        <h5 class="text-dark text-center">{{user.first_name}} {{user.last_name}}</h5>
+        <p class="text-dark text-center">{{user.card_name}}</p>
       </div>
 
       <div class="card-footer bg-white py-4 d-flex justify-content-center">
-        <i csSvgIcon="cs_pencil" (click)="onClick()" class="cursor-pointer">
+        <i csSvgIcon="cs_pencil" (click)="editCard(user)" class="cursor-pointer">
         </i>
-        <i csSvgIcon="cs_trash_alt" class="mx-5 cursor-pointer">
+        <i csSvgIcon="cs_trash_alt" (click)="deleteCard(user.id)" class="mx-5 cursor-pointer">
         </i>
-        <i csSvgIcon="cs_eye" class="cursor-pointer">
+        <i csSvgIcon="cs_eye" class="cursor-pointer" (click)="previewCard(user)">
         </i>
       </div>
     </div>
   </div>
+  <!-- <img src="{{temp}}" alt="Profile Photo">  -->
+  <!-- <img src="http://localhost:4200/{{data[0].profile_photo}}" alt="Profile Photo"> -->
+
+
+
 </div>

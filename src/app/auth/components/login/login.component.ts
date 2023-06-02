@@ -63,16 +63,17 @@ export class LoginComponent extends BaseComponent implements OnInit, OnDestroy {
     if (this.validateDetailFormBeforeSubmit()) {
       this.submitted = true;
       this.transferDetailFormValuesToModel();
+      
       this._authService.login(this.model).subscribe((result: ApiOkResponse<any>) => {
-        this._userService.getRecord(result.data.id).subscribe((response) => {
+        // this._userService.getRecord(result['result'].id).subscribe((response) => {
 
-          this._authService.showSuccessIdToast(result.eventMessageId);
+        //   this._authService.showSuccessIdToast(result.eventMessageId);
           return this._router.navigateByUrl(this._authService.redirectUrl);
-        },
-          error => {
-            this._userService.showApiErrorToast(error);
-          }
-        )
+        // },
+        //   error => {
+        //     this._userService.showApiErrorToast(error);
+        //   }
+        // )
       }, (error: ApiError) => {
         this.submitted = false;
         //console.dir(error);

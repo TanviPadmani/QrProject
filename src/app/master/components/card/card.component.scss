@@ -19,6 +19,23 @@ border: 2px solid black;
 
 }
 
+.m-5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-container {
+  position: absolute;
+  top: 158%;
+  left: 84%;
+  transform: translate(-60%, -60%);
+}
+
+.image-container {
+  position: relative;
+}
+
 // .hexagon {
 //     position: relative;
 //     height: 200px;

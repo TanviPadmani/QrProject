@@ -1,13 +1,16 @@
+import jwt_decode from 'jwt-decode';
 /**
  * Authentication API token response
  */
  export interface JwtResponse {
-    id?: string;
-    access_token?: string;
-    refresh_token?: string;
-    expiration?: number;
-    expires_in?: number;
-    trialSiteIds: number[];
+  id?: string;
+  email: string;
+  username: string;
+  tokens: {
+    access: string;
+    refresh: string;
+  };
+  trialSiteIds: number[];
   }
   
   /**
@@ -72,7 +75,7 @@
      * @returns string
      */
     refreshToken(): string {
-      return this.jwtResponse ? this.jwtResponse.refresh_token : null;
+      return this.jwtResponse ? this.jwtResponse.tokens.refresh : null;
     }
   
     /**
@@ -80,7 +83,7 @@
      * @returns string
      */
     token(): string {
-      return this.jwtResponse ? this.jwtResponse.access_token : null;
+      return this.jwtResponse ? this.jwtResponse.tokens.access : null;
     }
   
     /**
@@ -88,19 +91,35 @@
      * @returns {boolean}
      */
     isValid(): boolean {
-      return this.jwtResponse && this.jwtResponse.access_token && (new Date() < this.getTokenExpDate());
+      return this.jwtResponse && this.jwtResponse.tokens.access && (new Date() < this.getTokenExpDate());
     }
   
     /**
      * Returns Token Exp. Date information.
      * @returns Date
      */
+    // getTokenExpDate(): Date {
+    //   if (!this._validUpTo) {
+    //     if (this.jwtResponse && this.jwtResponse.tokens.access) {
+    //       const date = new Date(0);
+    //       date.setUTCSeconds(this.jwtResponse.);
+    //       this._validUpTo = date;
+    //     } else {
+    //       this._validUpTo = new Date(0);
+    //     }
+    //     //console.dir(this._validUpTo);
+    //   }
+    //   return this._validUpTo;
+    // }
     getTokenExpDate(): Date {
       if (!this._validUpTo) {
-        if (this.jwtResponse && this.jwtResponse.access_token) {
-          const date = new Date(0);
-          date.setUTCSeconds(this.jwtResponse.expiration);
-          this._validUpTo = date;
+        if (this.jwtResponse && this.jwtResponse.tokens.access) {
+          const accessToken = this.jwtResponse.tokens.access;
+        
+           const decodedAccessToken = jwt_decode(accessToken) as { exp: number };
+           const expDate = new Date(0);
+           expDate.setUTCSeconds(decodedAccessToken.exp);
+           this._validUpTo = expDate;
         } else {
           this._validUpTo = new Date(0);
         }

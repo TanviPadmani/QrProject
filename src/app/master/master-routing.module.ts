@@ -17,7 +17,7 @@ const routes: Routes = [
         children: [
           {
             path: 'dashboard',
-            canActivate: [AuthGuardService],
+             canActivate: [AuthGuardService],
             component: DashboardComponent,
             // data: {
             //   permission: EnumPermissions.CreateAccess,
@@ -33,6 +33,7 @@ const routes: Routes = [
             //   permissionFor: EnumPermissionFor.USER
             // }
           },
+         
           {
             path: 'card',
             canActivate: [AuthGuardService],

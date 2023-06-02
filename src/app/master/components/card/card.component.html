@@ -15,8 +15,8 @@
                     </a>
                     <div class="col-3">
                         <input type="text" class="form-control bg-white" id="exampleFormControlInput1"
-                            placeholder="Card Name" formControlName="card_name" [class.is-invalid]="myForm.get('card_name').invalid && myForm.get('card_name').touched"
-                           >
+                            placeholder="Card Name" formControlName="card_name"
+                            [class.is-invalid]="myForm.get('card_name').invalid && myForm.get('card_name').touched">
                         <div *ngIf="myForm.get('card_name').invalid && myForm.get('card_name').touched"
                             class="text-danger">Card Name is required</div>
                     </div>
@@ -26,7 +26,6 @@
         <div class="row p-4">
             <div class="col-md-8">
                 <div class="row border rounded-3">
-
                     <div class="row mt-5 mb-4">
                         <div class="col-md-6">
                             <div class="card border-0 browse-card" style="max-width: 540px;">
@@ -80,9 +79,14 @@
                             <div>
                                 <label for="inputEmail4" class="form-label">Select Color</label>
                             </div>
-                            <div class="d-flex align-items-center py-4">
-                                <span *ngFor="let c of color" class="circle cursor-pointer mx-2 bg-{{c.name}}"
+                            <!-- <div class="d-flex align-items-center py-4">
+                                <span *ngFor="let c of color" class="circle cursor-pointer mx-2 bg-{{c.code}}"
                                     [value]="c.id" (click)="selectColor(c)"></span>
+                            </div> -->
+                            <div class="d-flex align-items-center py-4">
+                                <span *ngFor="let c of color" class="circle cursor-pointer mx-2"
+                                    [style.background-color]="c.code" [attr.data-id]="c.id"
+                                    (click)="selectColor(c)"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -94,12 +98,10 @@
                                     <!-- <div class="input-group-text d-flex justify-content-center bg-skyblue"></div>
                                     <input type="text" class="form-control bg-white form-control-lg"> -->
                                     <input type="color" class="input-group-text d-flex justify-content-center p-0"
-                                        (change)="onColorChange($event)" >
-                                    <input type="text" class="form-control bg-white form-control-lg" name="color" formControlName="color_theme"
-                                        [value]="selectedColor"  >
-                                        
+                                        (change)="onColorChange($event)" [value]="selectedColor">
+                                    <input type="text" class="form-control bg-white form-control-lg" name="color"
+                                        formControlName="color_theme" [value]="selectedColor">
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -112,31 +114,43 @@
                     <div class="row pe-0 ps-4 py-4">
                         <div class="col-md-6">
                             <label for="inputEmail4" class="form-label">First Name</label>
-                            <input type="text" class="form-control bg-white form-control-lg" id="firstName" formControlName="first_name" [class.is-invalid]="myForm.get('first_name').invalid && myForm.get('first_name').touched"  >
-                            <div class="text-danger" *ngIf="myForm.get('first_name').invalid && myForm.get('first_name').touched">
+                            <input type="text" class="form-control bg-white form-control-lg" id="firstName"
+                                formControlName="first_name"
+                                [class.is-invalid]="myForm.get('first_name').invalid && myForm.get('first_name').touched">
+                            <div class="text-danger"
+                                *ngIf="myForm.get('first_name').invalid && myForm.get('first_name').touched">
                                 please enter firstname
                             </div>
                         </div>
                         <div class="col-md-6">
                             <label for="inputPassword4" class="form-label">Last Name</label>
-                            <input type="text" class="form-control bg-white form-control-lg" formControlName="last_name"  (change)="updatePreviewName()" [class.is-invalid]="myForm.get('last_name').invalid && myForm.get('last_name').touched">
-                            <div class="text-danger" *ngIf="myForm.get('last_name').invalid && myForm.get('last_name').touched">
+                            <input type="text" class="form-control bg-white form-control-lg" formControlName="last_name"
+                                (change)="updatePreviewName()"
+                                [class.is-invalid]="myForm.get('last_name').invalid && myForm.get('last_name').touched">
+                            <div class="text-danger"
+                                *ngIf="myForm.get('last_name').invalid && myForm.get('last_name').touched">
                                 please enter lastname
                             </div>
-
                         </div>
                         <div class="col-md-6">
                             <label for="inputAddress" class="form-label">Mobile</label>
-                            <input type="number" class="form-control bg-white form-control-lg" formControlName="mobile_number" [class.is-invalid]="myForm.get('mobile_number').invalid && myForm.get('mobile_number').touched"   >
-                            <div class="text-danger" *ngIf="myForm.get('mobile_number').invalid && myForm.get('mobile_number').touched">
-                                <div *ngIf="myForm.get('mobile_number').errors.required">Please enter a contact number.</div>
-                                 <div *ngIf="myForm.get('mobile_number').errors.pattern">Please enter a valid 10-digit contact number.</div>
+                            <input type="text" class="form-control bg-white form-control-lg"
+                                formControlName="mobile_number"
+                                [class.is-invalid]="myForm.get('mobile_number').invalid && myForm.get('mobile_number').touched"
+                                (change)="updateMobileNo()">
+                            <div class="text-danger"
+                                *ngIf="myForm.get('mobile_number').invalid && myForm.get('mobile_number').touched">
+                                <div *ngIf="myForm.get('mobile_number').errors.required">Please enter a contact number.
+                                </div>
+                                <div *ngIf="myForm.get('mobile_number').errors.pattern">Please enter a valid 10-digit
+                                    contact number.</div>
                             </div>
-
                         </div>
                         <div class="col-md-6">
                             <label for="inputAddress2" class="form-label">Email</label>
-                            <input type="email" class="form-control bg-white form-control-lg" formControlName="email"  (change)="updateMobile_Email()" [class.is-invalid]="myForm.get('email').invalid && myForm.get('email').touched">
+                            <input type="email" class="form-control bg-white form-control-lg" formControlName="email"
+                                (change)="updateEmail()"
+                                [class.is-invalid]="myForm.get('email').invalid && myForm.get('email').touched">
                             <div class="text-danger" *ngIf="myForm.get('email').invalid && myForm.get('email').touched">
                                 <div *ngIf="myForm.get('email').errors.required">Please enter an email address.</div>
                                 <div *ngIf="myForm.get('email').errors.email">Please enter a valid email address.</div>
@@ -145,8 +159,11 @@
                         </div>
                         <div class="col-md-6">
                             <label for="inputCity" class="form-label">Your Company Name</label>
-                            <input type="text" class="form-control bg-white form-control-lg" formControlName="company_name"  [class.is-invalid]="myForm.get('company_name').invalid && myForm.get('company_name').touched"  >
-                            <div class="text-danger" *ngIf="myForm.get('company_name').invalid && myForm.get('company_name').touched">
+                            <input type="text" class="form-control bg-white form-control-lg"
+                                formControlName="company_name"
+                                [class.is-invalid]="myForm.get('company_name').invalid && myForm.get('company_name').touched">
+                            <div class="text-danger"
+                                *ngIf="myForm.get('company_name').invalid && myForm.get('company_name').touched">
                                 please enter company name
                             </div>
 
@@ -154,16 +171,22 @@
                         </div>
                         <div class="col-md-6">
                             <label for="inputZip" class="form-label">Your Job Title</label>
-                            <input type="text" class="form-control bg-white form-control-lg" formControlName="job_title" [class.is-invalid]="myForm.get('job_title').invalid && myForm.get('job_title').touched" >
-                            <div class="text-danger"  *ngIf="myForm.get('job_title').invalid && myForm.get('job_title').touched">
+                            <input type="text" class="form-control bg-white form-control-lg" formControlName="job_title"
+                                [class.is-invalid]="myForm.get('job_title').invalid && myForm.get('job_title').touched">
+                            <div class="text-danger"
+                                *ngIf="myForm.get('job_title').invalid && myForm.get('job_title').touched">
                                 please enter job title
                             </div>
 
                         </div>
                         <div class="col-12">
                             <label for="inputAddress2" class="form-label">Address</label>
-                            <textarea class="form-control bg-white" id="exampleFormControlTextarea1" rows="3" formControlName="address" [class.is-invalid]="myForm.get('address').invalid && myForm.get('address').touched"  ></textarea>
-                            <div class="text-danger" *ngIf="myForm.get('address').invalid && myForm.get('address').touched">
+                            <textarea class="form-control bg-white" id="exampleFormControlTextarea1" rows="3"
+                                formControlName="address"
+                                [class.is-invalid]="myForm.get('address').invalid && myForm.get('address').touched"
+                                (change)="updateAddress()"></textarea>
+                            <div class="text-danger"
+                                *ngIf="myForm.get('address').invalid && myForm.get('address').touched">
                                 please enter your address
                             </div>
 
@@ -179,11 +202,13 @@
                     <div class="row pe-0 ps-4 py-4">
                         <div class="col-md-6">
                             <label for="inputEmail4" class="form-label">Company Website</label>
-                            <input type="text" class="form-control bg-white form-control-lg" formControlName="company_website" (change)="updateAddress_Web()">
+                            <input type="text" class="form-control bg-white form-control-lg"
+                                formControlName="company_website" (change)="updateWeb()">
                         </div>
                         <div class="col-md-6">
                             <label for="inputPassword4" class="form-label">Your Website</label>
-                            <input type="text" class="form-control bg-white form-control-lg" formControlName="personal_website">
+                            <input type="text" class="form-control bg-white form-control-lg"
+                                formControlName="personal_website" (change)="updatePersonal()">
                         </div>
                     </div>
 
@@ -213,8 +238,10 @@
 
                         <div class="col-md-6">
                             <div class="input-group mb-3">
-                                <div class="input-group-text d-flex justify-content-center"><i csSvgIcon="cs_twitter"></i></div>
-                                <input type="text" class="form-control bg-white form-control-lg" formControlName="twitter_link" (change)="updateTwitter()" >
+                                <div class="input-group-text d-flex justify-content-center"><i
+                                        csSvgIcon="cs_twitter"></i></div>
+                                <input type="text" class="form-control bg-white form-control-lg"
+                                    formControlName="twitter_link" (change)="updateTwitter()">
                             </div>
                         </div>
 
@@ -223,7 +250,8 @@
                                 <div class="input-group-text d-flex justify-content-center"><i
                                         csSvgIcon="cs_linkedin"></i>
                                 </div>
-                                <input type="text" class="form-control bg-white form-control-lg" formControlName="linkedin_link" (change)="updateLinkdin()" >
+                                <input type="text" class="form-control bg-white form-control-lg"
+                                    formControlName="linkedin_link" (change)="updateLinkdin()">
                             </div>
                         </div>
 
@@ -232,7 +260,8 @@
                                 <div class="input-group-text d-flex justify-content-center"><i
                                         csSvgIcon="cs_instagram"></i>
                                 </div>
-                                <input type="text" class="form-control bg-white form-control-lg" formControlName="instagram_link" (change)="updateInstagaram()">
+                                <input type="text" class="form-control bg-white form-control-lg"
+                                    formControlName="instagram_link" (change)="updateInstagaram()">
                             </div>
                         </div>
 
@@ -241,7 +270,7 @@
                                 <div class="input-group-text d-flex justify-content-center"><i csSvgIcon="cs_skype"></i>
                                 </div>
                                 <input type="text" class="form-control bg-white form-control-lg"
-                                    formControlName="skype_id">
+                                    formControlName="skype_id" (change)="updateSkype()">
                             </div>
                         </div>
 
@@ -250,7 +279,7 @@
                                 <div class="input-group-text d-flex justify-content-center"><i
                                         csSvgIcon="cs_behance"></i></div>
                                 <input type="text" class="form-control bg-white form-control-lg"
-                                    formControlName="behance_link">
+                                    formControlName="behance_link" (change)="updateBehance()">
                             </div>
                         </div>
 
@@ -259,7 +288,7 @@
                                 <div class="input-group-text d-flex justify-content-center"><i csSvgIcon="cs_zing"></i>
                                 </div>
                                 <input type="text" class="form-control bg-white form-control-lg"
-                                    formControlName="xing_link">
+                                    formControlName="xing_link" (change)="updateXing()">
                             </div>
                         </div>
 
@@ -268,7 +297,7 @@
                                 <div class="input-group-text d-flex justify-content-center"><i
                                         csSvgIcon="cs_youtube"></i></div>
                                 <input type="text" class="form-control bg-white form-control-lg"
-                                    formControlName="youtube_link">
+                                    formControlName="youtube_link" (change)="updateYoutube()">
                             </div>
                         </div>
 
@@ -278,7 +307,7 @@
                                         csSvgIcon="cs_whatsapp"></i>
                                 </div>
                                 <input type="text" class="form-control bg-white form-control-lg"
-                                    formControlName="whatsapp_link">
+                                    formControlName="whatsapp_link" (change)="updateWhatsapp()">
                             </div>
                         </div>
 
@@ -288,7 +317,7 @@
                                         csSvgIcon="cs_telegram"></i>
                                 </div>
                                 <input type="text" class="form-control bg-white form-control-lg"
-                                    formControlName="telegram_link">
+                                    formControlName="telegram_link" (change)="updateTelegram()">
                             </div>
                         </div>
 
@@ -297,7 +326,7 @@
                                 <div class="input-group-text d-flex justify-content-center"><i
                                         csSvgIcon="cs_tiktok"></i></div>
                                 <input type="text" class="form-control bg-white form-control-lg"
-                                    formControlName="tiktok_link">
+                                    formControlName="tiktok_link" (change)="updateTiktok()">
                             </div>
                         </div>
 
@@ -307,7 +336,7 @@
                                         csSvgIcon="cs_sharefile"></i>
                                 </div>
                                 <input type="text" class="form-control bg-white form-control-lg"
-                                    formControlName="sharefile_link">
+                                    formControlName="sharefile_link" (change)="updateSharefile()">
                             </div>
                         </div>
 
@@ -316,7 +345,8 @@
                     <hr>
                     <div class="col-12 text-end p-4">
                         <button type="reset" class="btn btn-secondary btn-cancel btn-lg px-4">Cancel</button>
-                        <button type="submit" value="submit" class="btn btn-primary ms-3 btn-lg px-4" [disabled]="!myForm.valid">Save</button>
+                        <button type="submit" value="submit" class="btn btn-primary ms-3 btn-lg px-4"
+                            [disabled]="!myForm.valid">Save</button>
                     </div>
                 </div>
             </div>
@@ -325,8 +355,12 @@
                     <div class="col-md-12 border rounded-3 p-4 bg-pale-lavender">
                         <div class="card bg-white border rounded-3">
                             <div class="position-relative">
-                                <img id="preview-image" src="../../../../assets/images/dummy-prof-pic.png"
+                                <!-- <img id="preview-image" src="../../../../assets/images/dummy-prof-pic.png"
+                                    class="card-img-top img-fluid" alt="..."> -->
+                                <img id="preview-image"
+                                    [src]="previewPhoto ? previewPhoto : '../../../../assets/images/dummy-prof-pic.png'"
                                     class="card-img-top img-fluid" alt="...">
+
                                 <div class="position-absolute w-100 overflow-hidden shape-svg bottom-0">
                                     <i>
                                         <svg [ngStyle]="{fill:selectedColor}" xmlns="http://www.w3.org/2000/svg"
@@ -340,7 +374,8 @@
                                         </svg>
                                     </i>
                                     <div class="position-absolute right-10 bottom-40 text-end w-50 overflow-hidden">
-                                        <img id='preview-logo' src="../../../../assets/images/logo-innrly.png" alt=""
+                                        <img id='preview-logo'
+                                            [src]="previewLogo ? previewLogo :'../../../../assets/images/logo-innrly.png'"
                                             class="img-fluid w-50">
                                     </div>
                                 </div>
@@ -349,9 +384,10 @@
                                 <h5 class="text-dark text-center">{{ previewName }}</h5>
                                 <!-- <p class="text-dark text-center font-weight-500 text-black">Precident / CEO - INNRLY</p> -->
                                 <div class="d-grid">
-                                    <div *ngIf="showPreview" class="d-flex py-2">
+                                    <div *ngIf="prieviewEmail" class="d-flex py-2">
                                         <div>
-                                            <a class="rounded-circle p-3 bg-skyblue">
+                                            <a class="rounded-circle p-3"
+                                                [ngStyle]="{'background-color': selectedColor}">
                                                 <i csSvgIcon="cs_email"></i>
                                             </a>
                                         </div>
@@ -359,19 +395,21 @@
                                             <p>{{prieviewEmail}}</p>
                                         </div>
                                     </div>
-                                    <div *ngIf="showPreview" class="d-flex py-2">
+                                    <div *ngIf="previewContact" class="d-flex py-2">
                                         <div>
-                                            <a class="rounded-circle p-3 bg-skyblue">
+                                            <a class="rounded-circle p-3"
+                                                [ngStyle]="{'background-color': selectedColor}">
                                                 <i csSvgIcon="cs_phone"></i>
                                             </a>
                                         </div>
                                         <div class="ms-3">
-                                            <p>{{previeContact}}</p>
+                                            <p>{{previewContact}}</p>
                                         </div>
                                     </div>
-                                    <div *ngIf="showSecondPreview" class="d-flex my-2">
+                                    <div *ngIf="prieviewAddress" class="d-flex my-2">
                                         <div>
-                                            <a class="rounded-circle p-3 bg-skyblue">
+                                            <a class="rounded-circle p-3"
+                                                [ngStyle]="{'background-color': selectedColor}">
                                                 <i csSvgIcon="cs_loaction"></i>
                                             </a>
                                         </div>
@@ -379,9 +417,10 @@
                                             <p>{{prieviewAddress}}</p>
                                         </div>
                                     </div>
-                                    <div *ngIf="showSecondPreview" class="d-flex my-2">
+                                    <div *ngIf="previewWeb" class="d-flex my-2">
                                         <div>
-                                            <a class="rounded-circle p-3 bg-skyblue">
+                                            <a class="rounded-circle p-3"
+                                                [ngStyle]="{'background-color': selectedColor}">
                                                 <i csSvgIcon="cs_web"></i>
                                             </a>
                                         </div>
@@ -404,7 +443,7 @@
                             QR Code
                         </h6>
                         <hr>
-                        <div class="p-4 pb-0">
+                        <!-- <div class="p-4 pb-0">
                             <div class="border rounded-3 p-2 d-flex bg-white">
                                 <div class="mx-5">
                                     <div *ngIf="squareqr">
@@ -417,6 +456,36 @@
                                     </div>
                                 </div>
                             </div>
+                        </div> -->
+                        <div class="p-4">
+                            <div class="border rounded-3 p-2 d-flex bg-white">
+                                <div class="mx-5">
+                                    <div class="mx-5 px-5">
+
+                                        <div *ngIf="!qrLogo && squareqr">
+                                            <img #qrImage src="../../../../assets/images/QR-Shapes/qr_code_square.svg"
+                                                class="img-fluid">
+                                            <input type="hidden" formControlName="qr_code_shape" [value]="'0'">
+                                        </div>
+                                        <div *ngIf="!qrLogo && !squareqr " class="qr-code-container">
+                                            <img #qrImage src="../../../../assets/images/QR-Shapes/qr_code_square.svg"
+                                                class="img-fluid">
+                                            <input type="hidden" formControlName="qr_code_shape" [value]="'1'">
+                                        </div>
+                                        <!-- <div *ngIf="qrLogo">
+                                            <div #qrCanvasContainer></div>
+                                          </div> -->
+                                        <!-- <div *ngIf="qrLogo" #qrCanvasContainer></div> -->
+                                        <div>
+                                            <div class="logo-container" *ngIf="logoImg">
+                                                <img [src]="logoImg" 
+                                                    [ngStyle]="{'height.px': 100, 'width.px': 100}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <div class="text-center py-4">
                             <button type="button" class="btn btn-primary btn-lg px-4" (click)="qrCodePopUp()">Design

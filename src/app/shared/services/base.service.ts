@@ -16,18 +16,20 @@ export class BaseService<A> {
   /**
    * refer to  API version 1 base url.
    */
-  public static API_V1: string = `${environment.Setting.apiServiceUrl}/api/v1`;
+  public static API_V1: string = `${environment.Setting.apiServiceUrl}`;
 
   /**
    * all services url path define by this object!
    */
   public static ApiUrls = {
-    Auth: `${BaseService.API_V1}/Auth`,
+    Auth: `${BaseService.API_V1}/auth`,
     Account: `${BaseService.API_V1}/Account`,
     ExternalAuth: `${BaseService.API_V1}/ExternalAuth`,
     Role: `${BaseService.API_V1}/Role`,
     User: `${BaseService.API_V1}/User`,
-    Setting: `${BaseService.API_V1}/Setting`
+    Setting: `${BaseService.API_V1}/Setting`,
+    card:`${BaseService.API_V1}/card`,
+    url :`${BaseService.API_V1}`,
   };
 
   /**
@@ -159,6 +161,7 @@ export class BaseService<A> {
  */
   getRecord(id: number): Observable<ApiOkResponse<A>> {
     var url = `${this.baseUrl}/${id}`;
+   
     return this._commonService.extractOkResponse(
       this._commonService.http.get<ApiOkResponse<A>>(url)
     );

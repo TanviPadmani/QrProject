@@ -7,60 +7,86 @@
 </div>
 <!-- <perfect-scrollbar style="max-height:calc(100vh - 80px);"></perfect-scrollbar> -->
 <div class="modal-body">
-    <nav class="justify-content-left nav-tabs d-flex">
+    <!-- <nav class="justify-content-left nav-tabs d-flex">
         <a class="nav-link active text-capitalize p-2 font-weight-500" aria-current="page" href="#">SELECT QR SHAPE</a>
         <a class="nav-link text-capitalize p-2 font-weight-500" href="#">ADD YOUR LOGO</a>
+    </nav> -->
+    <nav class="justify-content-left nav-tabs d-flex">
+        <a class="nav-link active text-capitalize p-2 font-weight-500" [class.active]="activeTab === 'qrShapeSection'"
+            (click)="changeTab('qrShapeSection')">SELECT QR SHAPE</a>
+        <a class="nav-link text-capitalize p-2 font-weight-500" [class.active]="activeTab === 'logoSection'"
+            (click)="changeTab('logoSection')">ADD YOUR LOGO</a>
     </nav>
     <!-- for 1st tab -->
-    <div class="row">
-        <div class="col-md-7">
-            <div class="row qr-code-options">
-                <div class="col-md-3 mb-4">
-                    <div class="rounded p-1" (click)="selectSquare()" [ngClass]="{'active': isSquareSelected}">
-                        <img src="../../../../assets/images/QR-Shapes/qr_code_square.svg" class="img-fluid">
+    <div class="tab-section" id="qrShapeSection" [hidden]="activeTab !== 'qrShapeSection'">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="row qr-code-options">
+                    <div class="col-md-3 mb-4">
+                        <div class="rounded p-1" (click)="selectSquare()" [ngClass]="{'active': isSquareSelected}">
+                            <img src="../../../../assets/images/QR-Shapes/qr_code_square.svg" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="rounded p-1" (click)="selectCircle()">
+                            <img src="../../../../assets/images/QR-Shapes/qr_code_circle.svg" class="img-fluid">
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-3 mb-4">
-                    <div class="rounded p-1" (click)="selectCircle()">
+            </div>
+            <!-- <div class="col-md-5 d-flex align-items-center justify-content-center p-4">
+            <img src="../../../../assets/images/QR-Shapes/qr_code_shape1.svg" class="img-fluid w-75">
+        </div> -->
+            <div class="col-md-5 d-flex align-items-center justify-content-center p-2">
+                <div class="m-5">
+                    <div *ngIf="isSquareSelected">
+                        <img src="../../../../assets/images/QR-Shapes/qr_code_square.svg" class="img-fluid">
+                    </div>
+                    <div *ngIf="!isSquareSelected">
                         <img src="../../../../assets/images/QR-Shapes/qr_code_circle.svg" class="img-fluid">
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- <div class="col-md-5 d-flex align-items-center justify-content-center p-4">
-            <img src="../../../../assets/images/QR-Shapes/qr_code_shape1.svg" class="img-fluid w-75">
-        </div> -->
-        <div class="col-md-5 d-flex align-items-center justify-content-center p-4">
-            <div *ngIf="isSquareSelected">
-                <img src="../../../../assets/images/QR-Shapes/qr_code_square.svg" class="img-fluid">
-            </div>
-            <div  *ngIf="!isSquareSelected">
-                <img src="../../../../assets/images/QR-Shapes/qr_code_circle.svg" class="img-fluid h-50 w-50">
             </div>
         </div>
     </div>
     <!-- end 2nd tab -->
 
     <!-- for 2nd tab -->
-    <!-- <div class="row" #collapseExample="ngbCollapse" [(ngbCollapse)]="isCollapsed">
-        <div class="col-md-7">
-            <div class="form-group h-100 p-4">
-                <div class="dropzone-wrapper d-flex justify-content-center h-100">
-                    <div class="dropzone-desc cs_csvg d-flex align-items-center p-5">
-                        <div class="lh-base text-center d-grid">
-                            <span>Drag and drop your logo file here</span>
-                            <span>or <span class="text-primary">Browse logo files</span></span>
-                        </div>   
+    <div class="tab-section" id="logoSection" [hidden]="activeTab !== 'logoSection'">
+        <div class="row">
+            <!-- #collapseExample="ngbCollapse" [(ngbCollapse)]="isCollapsed" -->
+            <div class="col-md-7">
+                <div class="form-group h-100 p-4">
+                    <div class="dropzone-wrapper d-flex justify-content-center h-100">
+                        <div class="dropzone-desc cs_csvg d-flex align-items-center p-5">
+                            <div class="lh-base text-center d-grid">
+                                <span>Drag and drop your logo file here</span>
+                                <span>or <span class="text-primary">Browse logo files</span></span>
+                            </div>
+                        </div>
+                        <input type="file" name="img_logo" (change)="onLogoSelected($event)"
+                            class="dropzone  position-absolute w-100 h-100">
                     </div>
-                    <input type="file" name="img_logo" class="dropzone  position-absolute w-100 h-100">
+                </div>
+            </div>
+            <div class="col-md-5 d-flex align-items-center justify-content-center p-2">
+                <!-- <img src="../../../../assets/images/QR-Shapes/qr_code_shape1.svg" class="img-fluid w-75"> -->
+                <!-- <div #qrCanvasContainer></div> -->
+                <div class="m-5">
+                    <div class="logo-container" *ngIf="logoImage">
+                        <img [src]="logoImage" class="logo-img" [ngStyle]="{'height.px': 100, 'width.px': 100}">
+                    </div>
+                    <div *ngIf="isSquareSelected">
+                        <img src="../../../../assets/images/QR-Shapes/qr_code_square.svg" class="img-fluid">
+                    </div>
+                    <div *ngIf="!isSquareSelected">
+                        <img src="../../../../assets/images/QR-Shapes/qr_code_circle.svg" class="img-fluid">
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-5 d-flex align-items-center justify-content-center p-4">
-            <img src="../../../../assets/images/QR-Shapes/qr_code_shape1.svg" class="img-fluid w-75">
-        </div>
-    </div> -->
-    <!-- end 2nd tab -->
+    </div>
+    <!-- end 2nd tab-->
 </div>
 <div class="modal-footer py-3">
     <button type="button" class="btn btn-secondary btn-cancel" (click)="onCancel()"

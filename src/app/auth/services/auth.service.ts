@@ -78,15 +78,42 @@ export class AuthService extends BaseService<LoginViewModel> {
    * @param {JwtResponse} token  JwtResponse from login api.
    * @param {boolean} remember true will remember token detail in localStorage otherwise in sessionStorage. 
    */
+  // setToken(token: JwtResponse, remember: boolean): boolean {
+  //   this._jwtResponse = token;
+  //   var strVal = JSON.stringify(token);
+  //   this._remember = remember;
+  //   if (remember) {
+  //     localStorage.setItem(this.key, strVal);
+  //   } else {
+  //     sessionStorage.setItem(this.key, strVal);
+  //   }
+
+  //   if (this._refreshTokenStarted) {
+  //     this._refreshTokenStarted = false;
+  //     //share with other tab!
+  //     localStorage.setItem(this._refreshTokenStorage, strVal);
+  //     localStorage.removeItem(this._refreshTokenStorage);
+  //   }
+  //   this.publishToken();
+  //   return true;
+  // }
   setToken(token: JwtResponse, remember: boolean): boolean {
     this._jwtResponse = token;
     var strVal = JSON.stringify(token);
     this._remember = remember;
+
+    // Extract the access and refresh tokens from the JwtResponse object
+    const accessToken = token.tokens.access;
+    const refreshToken = token.tokens.refresh;
+    console.log('beforeset',accessToken)
     if (remember) {
-      localStorage.setItem(this.key, strVal);
+      localStorage.setItem('access_token', accessToken);
+      localStorage.setItem('refresh_token', refreshToken);
     } else {
-      sessionStorage.setItem(this.key, strVal);
+      sessionStorage.setItem('access_token', accessToken);
+      sessionStorage.setItem('refresh_token', refreshToken);
     }
+    console.log('afterset',accessToken)
 
     if (this._refreshTokenStarted) {
       this._refreshTokenStarted = false;
@@ -95,8 +122,17 @@ export class AuthService extends BaseService<LoginViewModel> {
       localStorage.removeItem(this._refreshTokenStorage);
     }
     this.publishToken();
+    console.log('publish')
     return true;
   }
+
+  getToken(): string {
+    const token = this._remember ? localStorage.getItem('access_token') : sessionStorage.getItem('access_token');
+    console.log('token',token)
+    return token;
+   
+  }
+  
 
   /**
    * return the current AuthToken detail. null if yet not Authenticated!
@@ -154,18 +190,18 @@ export class AuthService extends BaseService<LoginViewModel> {
     }
     //Refresh token if token is valid.
     if (this._authJWTToken) {
-      if (this._authJWTToken.isValid()) {
-        let threeMinute = 180;//seconds        
-        var timeOut = this._authJWTToken.jwtResponse.expires_in;
-        if (timeOut > threeMinute) {
-          timeOut = timeOut - threeMinute;
-        }
-        timeOut = timeOut * 1000; // in ms!
-        //console.log("refresh token timer set for :" + timeOut);
-        this._tokenRefreshTimer = setTimeout(() => {
-          this.refreshToken();
-        }, timeOut);
-      }
+      // if (this._authJWTToken.isValid()) {
+      //   let threeMinute = 180;//seconds        
+      //   var timeOut = this._authJWTToken.jwtResponse.expires_in;
+      //   if (timeOut > threeMinute) {
+      //     timeOut = timeOut - threeMinute;
+      //   }
+      //   timeOut = timeOut * 1000; // in ms!
+      //   //console.log("refresh token timer set for :" + timeOut);
+      //   this._tokenRefreshTimer = setTimeout(() => {
+      //     this.refreshToken();
+      //   }, timeOut);
+      // }
     }
   }
 
@@ -192,13 +228,49 @@ export class AuthService extends BaseService<LoginViewModel> {
   /**
    * true if authenticated and have valid token.
    */
+  // isAuthenticated(): Observable<boolean> {
+  //   if (this._checkSession) {
+  //     return timer(500).pipe(
+  //       map(tick => tick),
+  //       mergeMap(tickInfo => {
+  //         this._checkSession = false;
+  //         this.jwtResponse = sessionStorage.getItem(this.key);
+  //         if (this._jwtResponse) {
+  //           this.publishToken();
+  //         }
+  //         var isValid = false;
+  //         if (this._authJWTToken) {
+  //           isValid = this._authJWTToken.isValid();
+  //           // if (!isValid && this._authJWTToken.refreshToken) {
+  //           //   return this.refreshTokenAtStartUp();
+  //           // }
+  //         }
+  //         return of(isValid);
+  //       }));
+  //   } else {
+  //     var isValid = false;
+  //     if (this._authJWTToken) {
+  //       isValid = this._authJWTToken.isValid();
+  //       if (!isValid && this._authJWTToken.refreshToken) {
+  //         return this.refreshTokenAtStartUp();
+  //       }
+  //     }
+  //     return of(isValid);
+  //   }
+  // }
+
+  // isAuthenticated(): boolean {
+  //   console.log('auth or not')
+  //   return !!this.getToken();
+  // }
+  
   isAuthenticated(): Observable<boolean> {
     if (this._checkSession) {
       return timer(500).pipe(
         map(tick => tick),
         mergeMap(tickInfo => {
           this._checkSession = false;
-          this.jwtResponse = sessionStorage.getItem(this.key);
+          this._jwtResponse = JSON.parse(sessionStorage.getItem(this.key));
           if (this._jwtResponse) {
             this.publishToken();
           }
@@ -213,15 +285,22 @@ export class AuthService extends BaseService<LoginViewModel> {
         }));
     } else {
       var isValid = false;
-      if (this._authJWTToken) {
-        isValid = this._authJWTToken.isValid();
-        if (!isValid && this._authJWTToken.refreshToken) {
-          return this.refreshTokenAtStartUp();
-        }
+      const jwtResponseStr = this._remember ?
+        localStorage.getItem(this.key) :
+        sessionStorage.getItem(this.key);
+      if (jwtResponseStr) {
+        const jwtResponse: JwtResponse = JSON.parse(jwtResponseStr);
+        this._jwtResponse = jwtResponse;
+        this.publishToken();
+        isValid = this._authJWTToken && this._authJWTToken.isValid();
+      }
+      if (!isValid && this._authJWTToken && this._authJWTToken.refreshToken) {
+        return this.refreshTokenAtStartUp();
       }
       return of(isValid);
     }
   }
+  
 
   /**
    * refresh the token at startup if saved access_token is exp. and refresh_token is there!
@@ -395,6 +474,12 @@ export class AuthService extends BaseService<LoginViewModel> {
       var response: JwtResponse = result.data;
       this.setToken(response, rememberMe);
     }
+    else if (result) {
+      console.log('data', result);
+      var response: JwtResponse = result['result'];
+      this.setToken(response, rememberMe);
+      console.log('res', response);
+   }
     return result;
   }
 
